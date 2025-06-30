@@ -1,0 +1,107 @@
+/* ========== styles.css ========== */
+
+/* 1. Setup reusable values */
+:root {
+  /* Font for big titles */
+  --font-heading: 'Montserrat', sans-serif;
+  /* Font for normal text */
+  --font-body: 'Mulish', sans-serif;
+  /* Blue color for links/buttons */
+  --color-primary: #1a4f8b;
+  /* Orange color when you hover */
+  --color-accent: #e57a44;
+  /* Standard spacing unit */
+  --spacer: 1.5rem;
+}
+
+/* 2. Reset default spacing & box sizing */
+* {
+  box-sizing: border-box; /* Make width/height include padding */
+  margin: 0; /* Remove extra space around elements */
+  padding: 0; /* Remove extra space inside elements */
+}
+
+/* 3. Page-wide text settings */
+body {
+  font-family: var(--font-body); /* Use our chosen body font */
+  line-height: 1.6;             /* Space lines out so they’re easy to read */
+  color: #333;                  /* Dark gray text for good contrast */
+}
+
+/* 4. Container to center content */
+.container {
+  max-width: 1200px;       /* Don’t get wider than this */
+  margin: 0 auto;          /* Center on the page */
+  padding: 0 var(--spacer);/* Space on left & right */
+}
+
+/* 5. Header bar styling */
+.site-header {
+  background: #fff;                          /* White background */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);     /* Small shadow below */
+  position: sticky;                          /* Stick to top on scroll */
+  top: 0;                                    /* Align at very top */
+  z-index: 1000;                             /* Sit above other things */
+}
+
+/* 6. Layout inside header */
+.site-header .container {
+  display: flex;                /* Put items in a row */
+  align-items: center;          /* Center them vertically */
+  justify-content: space-between; /* Spread them out left-to-right */
+  padding: var(--spacer) 0;     /* Space above & below */
+}
+
+/* 7. Logo area */
+.logo {
+  display: flex;          /* Image + text side by side */
+  align-items: center;    /* Center up/down */
+  text-decoration: none;  /* No underline */
+  color: inherit;         /* Same color as nearby text */
+}
+
+.logo img {
+  height: 50px;           /* Make the logo picture 50px tall */
+  margin-right: 0.75rem;  /* Space between image and text */
+}
+
+.logo h1 {
+  font-family: var(--font-heading); /* Use our title font */
+  font-size: 1.5rem;               /* Make it a bit bigger */
+}
+
+/* 8. Navigation menu */
+.site-nav ul {
+  display: flex;      /* Put links side by side */
+  list-style: none;   /* No bullets */
+  gap: var(--spacer); /* Space between each link */
+}
+
+.site-nav a {
+  text-decoration: none;  /* No underline on links */
+  font-weight: 500;       /* Medium weight text */
+  color: var(--color-primary); /* Blue link color */
+}
+
+.site-nav a:hover {
+  color: var(--color-accent); /* Change to orange on hover */
+}
+
+/* 9. Button styles */
+.btn {
+  display: inline-block;            /* Behaves like a button */
+  padding: 0.5rem 1rem;             /* Space inside the button */
+  font-family: var(--font-heading); /* Use title font */
+  text-decoration: none;            /* No underline */
+  border-radius: 4px;               /* Rounded corners */
+  transition: background 0.3s;      /* Smooth color fade */
+}
+
+.btn-primary {
+  background: var(--color-primary); /* Blue background */
+  color: #fff;                      /* White text */
+}
+
+.btn-primary:hover {
+  background: var(--color-accent);  /* Orange on hover */
+}
