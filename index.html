@@ -1,67 +1,62 @@
-<!-- ================= HEADER ================= -->
-<header>
-  <!-- Logo image for the business -->
-  <img src="logo.png" alt="Pete's Commercial Painting logo" />
+<!DOCTYPE html> <!-- Tell the browser this is an HTML5 page -->
+<html lang="en"> <!-- Start of the page; language is English -->
+<head> <!-- This section has “behind the scenes” info -->
+  <meta charset="UTF-8"> <!-- Make sure letters like “é” show up correctly -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Make the page look good on phones and computers -->
+  <meta name="description" content="Pete’s Commercial Painting — Maine’s Elite Painters">
+    <!-- Short description for search engines -->
 
-  <!-- Business name as the main title -->
-  <h1>Pete's Commercial Painting</h1>
+  <!-- Load two nice Google Fonts for headings and body text -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Mulish:wght@300;400&display=swap"
+    rel="stylesheet"
+  >
 
-  <!-- Tagline that sets the tone and service level -->
-  <p class="tagline">Maine’s Elite Commercial & Exterior Painters – $7/sqft</p>
-</header>
+  <!-- Link to our custom stylesheet where we’ll write CSS later -->
+  <link rel="stylesheet" href="styles.css">
 
+  <title>Pete’s Commercial Painting</title> <!-- The page title in the browser tab -->
+</head>
 
-<!-- ============== CALL TO ACTION ============== -->
-<section class="cta">
-  <!-- Section title prompting visitors to take action -->
-  <h2>Lock In Your Project</h2>
+<body> <!-- Everything you see goes inside here -->
 
-  <!-- Short description about service scope and requirements -->
-  <p>Commercial & exterior only. 2,500 sqft minimum. Deposit required.</p>
+  <!-- ========== Header + Navigation ========== -->
+  <header class="site-header"> <!-- The very top bar on every page -->
+    <div class="container"> <!-- Centers content and sets a max width -->
 
-  <!-- Link styled like a button to scroll down to the contact form -->
-  <a href="#contact" class="btn">Request a Quote</a>
-</section>
+      <!-- Logo and company name -->
+      <a href="/" class="logo"> <!-- Click this to go back to the homepage -->
+        <img src="logo.png" alt="Pete’s Painting Logo" />
+          <!-- The picture file for our logo -->
+        <h1>Pete’s Commercial Painting</h1>
+          <!-- Big heading with our company name -->
+      </a>
 
+      <!-- Main menu links -->
+      <nav class="site-nav"> <!-- This is the list of pages you can go to -->
+        <ul> <!-- A bulleted list, but we’ll hide the bullets with CSS -->
+          <li><a href="#services">Services</a></li>
+            <!-- Takes you down to the Services section -->
+          <li><a href="#projects">Projects</a></li>
+            <!-- Takes you to our Project gallery -->
+          <li><a href="#why-us">Why Us</a></li>
+            <!-- Explains why we’re the best choice -->
+          <li><a href="#contact">Contact</a></li>
+            <!-- Jump to our contact form -->
+        </ul>
+      </nav>
 
-<!-- ============== PROJECT HIGHLIGHT ============== -->
-<section class="project-highlight">
-  <!-- Title for the project showcase -->
-  <h2>Interior Work: Yosaku, Portland</h2>
+      <!-- Call-to-Action button -->
+      <a href="#contact" class="btn btn-primary">
+        Request a Quote
+      </a> <!-- Big, colorful button to ask for an estimate -->
 
-  <!-- Interior image #1 -->
-  <img src="yosaku-interior1.jpg" alt="Fresh paint in Yosaku dining area" />
+    </div> <!-- End of .container -->
+  </header>
+  <!-- ========== End Header + Navigation ========== -->
 
-  <!-- Interior image #2 -->
-  <img src="yosaku-interior2.jpg" alt="Detailed trim and ceiling work at Yosaku" />
+  <!-- From here, we’ll add <main> content sections (Services, Projects, etc.) -->
 
-  <!-- Interior image #3 -->
-  <img src="yosaku-interior3.jpg" alt="Clean lines and wall finish inside Yosaku" />
-
-  <!-- Description of the job -->
-  <p>Premium interior work for one of Portland’s busiest restaurants. Clean, crisp, and completed on schedule.</p>
-</section>
-
-
-<!-- ============== WHY CHOOSE PETE'S ============== -->
-<section class="why-us">
-  <h2>Why Choose Pete’s Commercial Painting</h2>
-  <ul>
-    <li>Run with Marine discipline: punctual, squared away, no excuses</li>
-    <li>Insured, OSHA-compliant, and clean job sites</li>
-    <li>Top-tier products, prep, and finish quality – no shortcuts</li>
-    <li>Trusted by Portland businesses like Yosaku</li>
-  </ul>
-</section>
-
-
-<!-- ============== BOOKING INFO ============== -->
-<section class="booking-info">
-  <h2>Booking & Payment Info</h2>
-  <ul>
-    <li>$7/sqft – we are Maine’s highest standard</li>
-    <li>Residential jobs must be 2,500+ sqft or more (exterior only)</li>
-    <li>50% deposit required to secure your spot on the schedule</li>
-    <li>We book fast – serious inquiries only</li>
-  </ul>
-</section>
+</body>
+</html>
