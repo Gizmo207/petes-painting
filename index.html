@@ -12,6 +12,8 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Mulish:wght@300;400&display=swap"
     rel="stylesheet"
   >
+  <!-- Google Fonts: Oswald for headings, Inter for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
   <!-- Link to our custom stylesheet where we’ll write CSS later -->
   <link rel="stylesheet" href="styles.css">
@@ -21,42 +23,119 @@
 
 <body> <!-- Everything you see goes inside here -->
 
-  <!-- ========== Header + Navigation ========== -->
-  <header class="site-header"> <!-- The very top bar on every page -->
-    <div class="container"> <!-- Centers content and sets a max width -->
+  <!-- ========== Mobile-Friendly Header + Nav ========== -->
+  <header class="site-header">
+    <div class="container">
 
-      <!-- Logo and company name -->
-      <a href="/" class="logo"> <!-- Click this to go back to the homepage -->
-        <img src="images/logo.png" alt="Pete’s Painting Logo" />
-          <!-- The picture file for our logo -->
-        <h1>Pete’s Commercial Painting</h1>
-          <!-- Big heading with our company name -->
+      <!-- Company logo and name -->
+      <a href="/" class="logo">
+        <img src="images/logo.png" alt="Pete’s Commercial Painting Logo" class="logo-img" />
+        <!-- <h1>Pete’s Commercial Painting</h1> -->
       </a>
 
-      <!-- Main menu links -->
-      <nav class="site-nav"> <!-- This is the list of pages you can go to -->
-        <ul> <!-- A bulleted list, but we’ll hide the bullets with CSS -->
+      <!-- Hamburger icon (for small screens only) -->
+      <button class="menu-toggle" aria-label="Toggle menu">
+        ☰
+      </button>
+
+      <!-- Navigation links -->
+      <nav class="site-nav">
+        <ul>
           <li><a href="#services">Services</a></li>
-            <!-- Takes you down to the Services section -->
           <li><a href="#projects">Projects</a></li>
-            <!-- Takes you to our Project gallery -->
           <li><a href="#why-us">Why Us</a></li>
-            <!-- Explains why we’re the best choice -->
           <li><a href="#contact">Contact</a></li>
-            <!-- Jump to our contact form -->
         </ul>
       </nav>
 
-      <!-- Call-to-Action button -->
-      <a href="#contact" class="btn btn-primary">
-        Request a Quote
-      </a> <!-- Big, colorful button to ask for an estimate -->
-
-    </div> <!-- End of .container -->
+      <!-- Call to Action button -->
+      <a href="#contact" class="btn btn-primary">Request a Quote</a>
+    </div>
   </header>
-  <!-- ========== End Header + Navigation ========== -->
+  <!-- ========== End Mobile-Friendly Header + Nav ========== -->
 
   <!-- From here, we’ll add <main> content sections (Services, Projects, etc.) -->
+
+  <!-- ========== Services Section ========== -->
+  <section id="services" class="services-section">
+    <div class="container">
+      <h2>Our Services</h2>
+      <p>
+        We deliver high-quality painting and finishing solutions for commercial spaces and large residential exteriors across Maine.
+      </p>
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card">
+          <img src="images/icon1.png" alt="Commercial painting icon">
+          <h3>Commercial Painting</h3>
+          <p>
+            Interior and exterior painting for offices, retail spaces, and restaurants—like our recent work at Yosaku in Portland.
+          </p>
+        </div>
+        <!-- Service 2 -->
+        <div class="service-card">
+          <img src="images/icon2.png" alt="Exterior finishes icon">
+          <h3>Exterior Coatings</h3>
+          <p>
+            Durable, weather-resistant finishes for commercial buildings and residential exteriors over 2,500 sq. ft.
+          </p>
+        </div>
+        <!-- Service 3 -->
+        <div class="service-card">
+          <img src="images/icon3.png" alt="Surface prep icon">
+          <h3>Prep & Staining</h3>
+          <p>
+            Full surface preparation—power washing, sanding, priming, and staining—done right for long-lasting results.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Projects Gallery ========== -->
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <h2>Recent Projects</h2>
+      <p>Here’s a look at a few of the spaces we’ve transformed around Maine.</p>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <img src="images/yosaku.jpg" alt="Interior of Yosaku restaurant in Portland">
+          <h3>Yosaku Restaurant</h3>
+          <p>Full interior repaint for a high-traffic Portland eatery — completed on schedule with no downtime for lunch service.</p>
+        </div>
+        <!-- Project 2 -->
+        <div class="project-card">
+          <img src="images/exterior-home.jpg" alt="Large residential exterior repaint">
+          <h3>South Portland Residence</h3>
+          <p>Exterior repaint with custom stain-matched siding. 3,200 sq. ft. home with full prep and trim refinishing.</p>
+        </div>
+        <!-- Project 3 -->
+        <div class="project-card">
+          <img src="images/storefront.jpg" alt="Painted retail storefront">
+          <h3>Retail Storefront</h3>
+          <p>New color scheme for a downtown commercial space, designed to match updated signage and branding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Veteran & Guarantee Callout ========== -->
+  <section class="callout-banner">
+    <div class="container">
+      <p>
+        <strong>Veteran-owned. Maine-proud.</strong> We guarantee every job is done right — or we’ll make it right, no questions asked.
+      </p>
+    </div>
+  </section>
+
+  <script>
+  // When the menu button is clicked…
+  document.querySelector('.menu-toggle').addEventListener('click', function () {
+    // Toggle the .active class to show/hide menu
+    document.querySelector('.site-nav').classList.toggle('active');
+  });
+  </script>
 
 </body>
 </html>

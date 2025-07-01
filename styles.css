@@ -1,5 +1,26 @@
 /* ========== styles.css ========== */
 
+/* === Color Palette === */
+:root {
+  --color-primary: #1A3E5F;
+  --color-accent:  #E57240;
+  --color-bg:      #F2F2F2;
+  --color-text:    #2B2B2B;
+  --color-border:  #DADADA;
+}
+
+/* === Fonts === */
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  color: var(--color-primary);
+}
+
 /* 1. Setup reusable values */
 :root {
   /* Font for big titles */
@@ -37,8 +58,9 @@ body {
 
 /* 5. Header bar styling */
 .site-header {
-  background: #fff;                          /* White background */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);     /* Small shadow below */
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(26,62,95,0.06);
   position: sticky;                          /* Stick to top on scroll */
   top: 0;                                    /* Align at very top */
   z-index: 1000;                             /* Sit above other things */
@@ -70,17 +92,35 @@ body {
   font-size: 1.5rem;               /* Make it a bit bigger */
 }
 
+.logo-img {
+  width: 234px !important;
+  height: 117px !important; /* Increased height for better visibility */
+  object-fit: contain; /* Prevents distortion */
+  display: block;
+}
+
+/* Optional: vertically center logo in nav bar */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
 /* 8. Navigation menu */
 .site-nav ul {
   display: flex;      /* Put links side by side */
   list-style: none;   /* No bullets */
-  gap: var(--spacer); /* Space between each link */
+  gap: 2.5rem; /* Increase space between tabs */
+  margin: 0;
+  padding: 0;
 }
 
 .site-nav a {
   text-decoration: none;  /* No underline on links */
-  font-weight: 500;       /* Medium weight text */
-  color: var(--color-primary); /* Blue link color */
+  font-weight: 600;       /* Medium weight text */
+  color: #fff;
+  font-size: 1.2rem; /* Make tabs bigger */
+  padding: 0.75rem 1.5rem; /* More padding for larger clickable area */
+  transition: color 0.2s;
 }
 
 .site-nav a:hover {
@@ -98,10 +138,189 @@ body {
 }
 
 .btn-primary {
-  background: var(--color-primary); /* Blue background */
-  color: #fff;                      /* White text */
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
 .btn-primary:hover {
-  background: var(--color-accent);  /* Orange on hover */
+  background: #cf5e23;
+}
+
+/* Card borders and subtle dividers */
+.service-card, .project-card {
+  border: 1px solid var(--color-border);
+}
+
+/* ========== Responsive Navigation ========== */
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--color-primary, #2a7ae2);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .site-header .container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    width: 100%;
+    display: none; /* Hide by default */
+    margin-top: 1rem;
+  }
+
+  .site-nav.active {
+    display: block; /* Show when active */
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+  }
+}
+
+/* ========== Services Section ========== */
+.services-section {
+  padding: 4rem 0;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+.services-section h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.services-section p {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.05rem;
+  color: #444;
+}
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.service-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+.service-card:hover {
+  transform: translateY(-5px);
+}
+.service-card img {
+  height: 44px;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.service-card h3 {
+  font-family: var(--font-heading);
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  color: var(--color-primary, #2a7ae2);
+}
+.service-card p {
+  font-size: 0.98rem;
+  color: #444;
+  margin: 0;
+}
+
+/* ========== Projects Section ========== */
+.projects-section {
+  padding: 4rem 0;
+  background: #fff;
+  text-align: center;
+}
+.projects-section h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.project-card {
+  width: 300px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+}
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.project-card h3 {
+  font-size: 1.25rem;
+  margin: 1rem 0 0.5rem;
+  color: var(--color-primary, #2a7ae2);
+}
+.project-card p {
+  font-size: 0.95rem;
+  padding: 0 1rem 1.5rem;
+  color: #555;
+}
+
+/* ========== Veteran & Guarantee Callout ========== */
+.callout-banner {
+  background: var(--color-primary, #2a7ae2);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.callout-banner strong {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .services-grid, .projects-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .service-card, .project-card {
+    width: 95%;
+    max-width: 400px;
+  }
 }
