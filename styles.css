@@ -488,6 +488,26 @@ cite {
   font-size: 1.25rem;
 }
 
+/* ========== Quote Section ========== */
+.quote-section {
+  padding: 4rem 0;
+  text-align: center;
+  background: var(--color-bg);
+}
+
+.quote-section blockquote {
+  font-size: 1.8rem;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--color-primary);
+}
+
+.quote-section cite {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
 /* ========== Footer ========== */
 .site-footer {
   background: var(--color-text);
@@ -542,9 +562,25 @@ html {
 
 /* Add scroll margin to services section */
 #services {
-  scroll-margin-top: 100px; /* Adjust based on nav height */
+  scroll-margin-top: 200px; /* Increased scroll margin */
 }
 
 .services-section {
-  margin-bottom: 6rem; /* Add space below services */
+  margin-bottom: 12rem; /* Increased space */
+  position: relative; /* For pseudo-element positioning */
+}
+
+.services-section::after {
+  content: '';
+  position: absolute;
+  bottom: -6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: rgba(0,0,0,0.1);
+}
+
+#projects {
+  margin-top: 8rem; /* Increased top spacing */
 }
