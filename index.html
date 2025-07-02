@@ -167,7 +167,7 @@
   <!-- Photo Gallery Modal -->
   <div id="gallery-modal" class="modal">
     <div class="modal-content">
-      <span id="gallery-close" class="close">&times;</span>
+      <button id="gallery-close" class="close" aria-label="Close gallery">&times;</button>
       <div class="carousel">
         <div class="slide">
           <img src="images/project1.jpg" alt="Project photo">
@@ -262,13 +262,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.overflow = 'hidden';
   });
 
-  // Close modal via event delegation (works even if X is replaced or re-rendered)
-  modal.addEventListener('click', (e) => {
-    console.log('Modal click event:', e.target, e.target.id);
-    if (e.target.id === 'gallery-close' || e.target === modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
+  // Only close modal when clicking the close button (X)
+  closeBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
   });
 
   // Carousel Functionality

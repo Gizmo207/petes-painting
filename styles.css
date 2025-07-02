@@ -621,6 +621,16 @@ html {
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0 0.5em;
+  line-height: 1;
+  transition: color 0.2s, outline 0.2s;
+}
+.close:hover, .close:focus {
+  color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
 }
 
 .carousel {
