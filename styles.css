@@ -64,6 +64,13 @@ body {
   position: sticky;                          /* Stick to top on scroll */
   top: 0;                                    /* Align at very top */
   z-index: 1000;                             /* Sit above other things */
+  border-bottom: 4px solid rgba(255,255,255,0.15); /* Increased border */
+}
+
+/* Add slight background color change on scroll */
+.site-header.scrolled {
+  background: rgba(26, 62, 95, 0.97);
+  border-bottom: 4px solid var(--color-accent); /* Increased border */
 }
 
 /* 6. Layout inside header */
@@ -97,6 +104,112 @@ body {
   height: 117px !important; /* Increased height for better visibility */
   object-fit: contain; /* Prevents distortion */
   display: block;
+}
+
+/* Optional: vertically center logo in nav bar */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* 8. Navigation menu */
+.site-nav ul {
+  display: flex;      /* Put links side by side */
+  list-style: none;   /* No bullets */
+  gap: 2.5rem; /* Increase space between tabs */
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  text-decoration: none;  /* No underline on links */
+  font-weight: 600;       /* Medium weight text */
+  color: #fff;
+  font-size: 1.2rem; /* Make tabs bigger */
+  padding: 0.75rem 1.5rem; /* More padding for larger clickable area */
+  transition: color 0.2s;
+}
+
+.site-nav a:hover {
+  color: var(--color-accent); /* Change to orange on hover */
+}
+
+/* 9. Button styles */
+.btn {
+  display: inline-block;            /* Behaves like a button */
+  padding: 0.5rem 1rem;             /* Space inside the button */
+  font-family: var(--font-heading); /* Use title font */
+  text-decoration: none;            /* No underline */
+  border-radius: 4px;               /* Rounded corners */
+  transition: background 0.3s;      /* Smooth color fade */
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #cf5e23;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Card borders and subtle dividers */
+.service-card, .project-card {
+  border: 1px solid var(--color-border);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.service-card {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.service-card img {
+  height: 60px;
+  width: 60px;
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 /* Optional: vertically center logo in nav bar */
@@ -420,4 +533,18 @@ cite {
     width: 95%;
     max-width: 400px;
   }
+}
+
+/* Add scroll padding to services section */
+html {
+  scroll-padding-top: 100px; /* Adjust based on your nav height */
+}
+
+/* Add scroll margin to services section */
+#services {
+  scroll-margin-top: 100px; /* Adjust based on nav height */
+}
+
+.services-section {
+  margin-bottom: 6rem; /* Add space below services */
 }

@@ -88,7 +88,7 @@
   </section>
 
   <!-- ========== Services Section ========== -->
-  <section id="services" class="services-section">
+  <section id="services" class="services-section" style="scroll-margin-top: 100px;">
     <div class="container">
       <h2>Our Services</h2>
       <p>
@@ -208,6 +208,18 @@
   document.querySelector('.menu-toggle').addEventListener('click', function () {
     // Toggle the .active class to show/hide menu
     document.querySelector('.site-nav').classList.toggle('active');
+  });
+  </script>
+
+  <script>
+  // Add scroll detection for nav bar
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('.site-header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
   });
   </script>
 
