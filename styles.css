@@ -1,3 +1,17 @@
+/* ========== Fix for .hero-section (landing section) background ========== */
+.hero-section {
+  background: #1a4f8b;
+  color: white;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero-section .hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 2rem;
+}
 /* ========== styles.css ========== */
 
 /* === Color Palette === */
@@ -349,7 +363,7 @@ body {
 
 /* ========== Hero Section ========== */
 .hero {
-  background: var(--color-primary);
+  background: #1a4f8b !important;
   color: white;
   padding: 6rem 0;
   position: relative;
@@ -360,6 +374,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+  padding: 0 2rem;
 }
 
 .hero h1 {
@@ -392,6 +407,7 @@ body {
   grid-template-columns: 3fr 2fr;
   gap: 4rem;
   align-items: center;
+  padding: 0 2rem;
 }
 
 .about-text h3 {
@@ -554,6 +570,7 @@ html {
 .services-section {
   margin-bottom: 4rem; /* Reduced space */
   position: relative; /* For pseudo-element positioning */
+  padding: 0 2rem;
 }
 
 .services-section::after {
@@ -570,6 +587,7 @@ html {
 #projects {
   margin-top: 8rem; /* Increased top spacing */
   scroll-margin-top: 100px; /* Avoid navbar overlap */
+  padding: 0 2rem;
 }
 
 .services-section .container p {
@@ -659,7 +677,7 @@ html {
 
 .prev, .next {
   cursor: pointer;
-  background: var(--color-primary);
+  background: #1a4f8b;
   color: white;
   border: none;
   padding: 10px 20px;
