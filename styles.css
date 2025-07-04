@@ -408,20 +408,22 @@ html {
 
 /* Grid to display service cards */
 .services-grid {
-  display: flex;                     /* Put cards side-by-side */
-  gap: 2.5rem;                       /* Increased space between cards */
-  margin-top: 3rem;                  /* Increased space above the grid */
-  padding: 0.5rem;                   /* Small padding to allow for hover shadow */
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  padding: 0.5rem;
+  min-height: 320px;
+  align-items: flex-start;
 }
 
 /* Services section image separator */
 /* This is the full-width image that separates services from projects section */
 .services-separator {
-  margin-top: 5rem;                     /* Space above the separator */
-  position: relative;                   /* Positioning context */
-  height: 300px;                        /* Fixed height */
-  overflow: hidden;                     /* Hide overflow */
-  width: 100%;                          /* Full width */
+  margin-top: 5rem;
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  width: 100%;
 }
 
 /* The actual separator image */
@@ -929,23 +931,25 @@ cite {
 
 /* Service card icon container */
 .service-card .icon-container {
-  margin-bottom: 1rem;              /* Space below icon */
-  height: 80px;                     /* Fixed height area for icon */
-  display: flex;                    /* Use flexbox for centering */
-  align-items: center;              /* Center vertically */
-  justify-content: center;          /* Center horizontally */
+  margin-bottom: 1rem;
+  min-height: 70px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Service card icon image styling */
 .service-card img {
-  height: 50px;                     /* Increased height */
-  width: 50px;                      /* Increased width */
-  margin-bottom: 1rem;              /* Space below icon */
-  display: block;                   /* Block display */
-  margin-left: auto;                /* Center horizontally */
-  margin-right: auto;               /* Center horizontally */
-  object-fit: contain;              /* Prevent distortion */
-  transition: transform 0.3s;       /* Smooth animation for hover */
+  max-height: 70px;
+  max-width: 70px;
+  width: auto;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+  transition: transform 0.3s;
 }
 
 /* Make icon slightly larger on hover */
