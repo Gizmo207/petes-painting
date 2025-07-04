@@ -42,7 +42,7 @@
         <ul>
           <li><a href="#services">Services</a></li>
           <li><a href="#projects" id="projects-link">Projects</a></li>
-          <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#why-us" id="whyus-link">Why Us</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -341,6 +341,17 @@ document.addEventListener('DOMContentLoaded', function() {
   if (projectsLink) {
     projectsLink.addEventListener('click', function(e) {
       var target = document.getElementById('projects');
+      if (target) {
+        e.preventDefault();
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 30;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  }
+  var whyusLink = document.getElementById('whyus-link');
+  if (whyusLink) {
+    whyusLink.addEventListener('click', function(e) {
+      var target = document.getElementById('why-us');
       if (target) {
         e.preventDefault();
         var y = target.getBoundingClientRect().top + window.pageYOffset - 30;
