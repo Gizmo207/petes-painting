@@ -41,7 +41,7 @@
       <nav class="site-nav">
         <ul>
           <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#projects" id="projects-link">Projects</a></li>
           <li><a href="#why-us">Why Us</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -335,5 +335,20 @@
       }, 0);
     }
   </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var projectsLink = document.getElementById('projects-link');
+  if (projectsLink) {
+    projectsLink.addEventListener('click', function(e) {
+      var target = document.getElementById('projects');
+      if (target) {
+        e.preventDefault();
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 30;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
