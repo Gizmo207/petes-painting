@@ -229,9 +229,20 @@ html {
 }
 
 /* Card borders and subtle dividers */
-/* Adds a light border to cards for visual separation */
+/* Adds styling to cards for visual separation and depth */
 .service-card, .project-card {
   border: 1px solid var(--color-border); /* Light gray border */
+  background: white;                     /* White background */
+  border-radius: 8px;                    /* Rounded corners */
+  padding: 2rem;                         /* Space inside card */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth animation for hover effects */
+}
+
+/* Hover effect for service and project cards */
+.service-card:hover, .project-card:hover {
+  transform: translateY(-5px);           /* Card moves up slightly when hovered */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Enhanced shadow when hovered */
 }
 
 /* ========== Responsive Navigation ========== */
@@ -392,8 +403,9 @@ html {
 /* Grid to display service cards */
 .services-grid {
   display: flex;                     /* Put cards side-by-side */
-  gap: 2rem;                         /* Space between cards */
-  margin-top: 2rem;                  /* Space above the grid */
+  gap: 2.5rem;                       /* Increased space between cards */
+  margin-top: 3rem;                  /* Increased space above the grid */
+  padding: 0.5rem;                   /* Small padding to allow for hover shadow */
 }
 
 /* ========== Why Us Section ========== */
@@ -841,12 +853,15 @@ cite {
   .services-grid, .projects-grid {
     flex-direction: column;           /* Stack cards vertically */
     align-items: center;              /* Center cards */
+    gap: 2rem;                        /* Less space between stacked cards */
   }
   
   /* Adjust card widths for smaller screens */
   .service-card, .project-card {
     width: 95%;                       /* Almost full width */
     max-width: 400px;                 /* Maximum width */
+    min-height: 0;                    /* Reset minimum height for mobile */
+    padding: 1.5rem;                  /* Slightly less padding on mobile */
   }
   
   /* Make Why Us section single column */
@@ -857,13 +872,52 @@ cite {
   }
 }
 
+/* Service card specific styling */
+.service-card {
+  text-align: center;               /* Center content */
+  display: flex;                    /* Use flexbox for layout */
+  flex-direction: column;           /* Stack items vertically */
+  align-items: center;              /* Center items horizontally */
+  flex: 1;                          /* Equal width */
+  min-height: 300px;                /* Minimum height for consistency */
+  justify-content: flex-start;      /* Align content to the top */
+}
+
+/* Service card heading style */
+.service-card h3 {
+  margin: 1rem 0;                   /* Space above and below heading */
+  font-size: 1.4rem;                /* Medium-large text size */
+  color: var(--color-primary);      /* Blue color */
+}
+
+/* Service card text style */
+.service-card p {
+  font-size: 1.05rem;               /* Slightly larger text */
+  line-height: 1.6;                 /* Increased line spacing for readability */
+}
+
+/* Service card icon container */
+.service-card .icon-container {
+  margin-bottom: 1rem;              /* Space below icon */
+  height: 80px;                     /* Fixed height area for icon */
+  display: flex;                    /* Use flexbox for centering */
+  align-items: center;              /* Center vertically */
+  justify-content: center;          /* Center horizontally */
+}
+
 /* Service card icon image styling */
 .service-card img {
-  height: 44px;                       /* Fixed height */
-  width: 44px;                        /* Fixed width */
-  margin-bottom: 1rem;                /* Space below icon */
-  display: block;                     /* Block display */
-  margin-left: auto;                  /* Center horizontally */
-  margin-right: auto;                 /* Center horizontally */
-  object-fit: contain;                /* Prevent distortion */
+  height: 50px;                     /* Increased height */
+  width: 50px;                      /* Increased width */
+  margin-bottom: 1rem;              /* Space below icon */
+  display: block;                   /* Block display */
+  margin-left: auto;                /* Center horizontally */
+  margin-right: auto;               /* Center horizontally */
+  object-fit: contain;              /* Prevent distortion */
+  transition: transform 0.3s;       /* Smooth animation for hover */
+}
+
+/* Make icon slightly larger on hover */
+.service-card:hover img {
+  transform: scale(1.1);            /* Grow icon slightly when card is hovered */
 }
