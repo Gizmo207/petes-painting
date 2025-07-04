@@ -240,7 +240,7 @@
             <li>And surrounding areas in Southern Maine</li>
           </ul>
           <div class="contact-details">
-            <p><strong>Phone:</strong> (208) 281-0525</p>
+            <p><strong>Phone:</strong> (207) 281-0525</p>
             <p><strong>Email:</strong> support@pcp207.com</p>
             <p class="contact-tagline">Whether you have questions about a specific service or want to discuss your upcoming project, we're here to help.</p>
           </div>
@@ -304,14 +304,23 @@
   
   <!-- Script to ensure page loads at the top when coming from thank-you page -->
   <script>
+    // ========== RETURN TO TOP FUNCTIONALITY ==========
+    // This script ensures the page scrolls to the top when:
+    // 1. Coming back from the thank-you page after submitting the form
+    // 2. Using links that point to #top
+    
     // Check if we arrived from the thank-you page
     if (document.referrer.includes('thanks.html')) {
-      // Force scroll to top
+      // If yes, force the page to scroll to the very top (0,0 coordinates)
+      // This prevents the page from remembering the previous scroll position
+      // which would otherwise take the user back to the contact section
       window.scrollTo(0, 0);
     }
     
-    // Ensure anchor links to #top always go to the very top
+    // Also check if someone clicked a link to the #top anchor
     if (window.location.hash === '#top') {
+      // Use setTimeout to let the browser finish its current tasks
+      // then scroll to the top - this makes sure it always works
       setTimeout(function() {
         window.scrollTo(0, 0);
       }, 0);

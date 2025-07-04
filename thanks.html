@@ -11,47 +11,65 @@
 
   <title>Thank You - Pete's Commercial Painting</title>
   
+  <!-- Styles specific to the thank-you page -->
   <style>
+    /* Main thank you section that fills most of the viewport */
     .thank-you-section {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 1rem;
+      min-height: 70vh;              /* At least 70% of screen height */
+      display: flex;                 /* Center content vertically and horizontally */
+      align-items: center;           /* Vertical centering */
+      justify-content: center;       /* Horizontal centering */
+      text-align: center;            /* Center text */
+      padding: 4rem 1rem;            /* Space around content */
     }
     
+    /* Container for the thank you message */
     .thank-you-content {
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 800px;              /* Limit width for readability */
+      margin: 0 auto;                /* Center horizontally */
     }
     
+    /* Large checkmark icon */
     .thank-you-icon {
-      font-size: 5rem;
-      color: var(--color-accent);
-      margin-bottom: 2rem;
+      font-size: 5rem;               /* Very large text */
+      color: var(--color-accent);    /* Orange color */
+      margin-bottom: 2rem;           /* Space below icon */
     }
     
+    /* Thank you headline */
     .thank-you-content h1 {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.5rem;         /* Space below heading */
     }
     
+    /* Thank you message text */
     .thank-you-content p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 1.2rem;             /* Slightly larger text */
+      margin-bottom: 2rem;           /* Space below paragraphs */
     }
   </style>
   
+  <!-- Script to ensure the user returns to the top of the homepage -->
   <script>
-    // Script to ensure clicking the "Return to Homepage" button always goes to the top
+    // ========== RETURN TO TOP FUNCTIONALITY ==========
+    // This script ensures the user always goes back to the top of the homepage
+    // when clicking the "Return to Homepage" button
+    
+    // Wait until the page is fully loaded
     document.addEventListener('DOMContentLoaded', function() {
+      // Find the "Return to Homepage" button
       const returnButton = document.querySelector('a.btn.btn-primary');
+      
+      // If we found the button
       if (returnButton) {
+        // When someone clicks the button
         returnButton.addEventListener('click', function(e) {
-          // Remove any stored scroll position for the homepage
+          // Clear any saved scroll position that the browser might remember
+          // This prevents the browser from scrolling back to the contact section
           if (window.sessionStorage) {
             sessionStorage.removeItem('scrollPosition');
           }
+          
+          // The #top in the button's href will also help ensure we go to the top
         });
       }
     });
