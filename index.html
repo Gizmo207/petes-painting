@@ -16,61 +16,65 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
   <!-- Link to our custom stylesheet where we’ll write CSS later -->
-  <!-- Link to our custom stylesheet where we’ll write CSS later -->
   <link rel="stylesheet" href="styles.css">
 
   <title>Pete’s Commercial Painting</title> <!-- The page title in the browser tab -->
 </head>
 
-<body> <!-- Everything you see goes inside here -->
+<body id="top"> <!-- Everything you see goes inside here -->
 
   <!-- ========== Mobile-Friendly Header + Nav ========== -->
   <header class="site-header">
     <div class="container">
+
       <!-- Company logo and name -->
       <a href="/" class="logo">
         <img src="images/logo.png" alt="Pete’s Commercial Painting Logo" class="logo-img" />
         <!-- <h1>Pete’s Commercial Painting</h1> -->
       </a>
+
       <!-- Hamburger icon (for small screens only) -->
       <button class="menu-toggle" aria-label="Toggle menu">
         ☰
       </button>
+
       <!-- Navigation links -->
       <nav class="site-nav">
         <ul>
           <li><a href="#services">Services</a></li>
-          <li><a href="#projects" id="projects-link">Projects</a></li>
+          <li><a href="#projects">Projects</a></li>
           <li><a href="#why-us">Why Us</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+
       <!-- Call to Action button -->
       <a href="#contact" class="btn btn-primary">Request a Quote</a>
     </div>
   </header>
   <!-- ========== End Mobile-Friendly Header + Nav ========== -->
 
-  <!-- ===================== HERO SECTION ===================== -->
-  <section class="hero-section">
-    <div class="hero-content">
+  <!-- ========== Hero Section ========== -->
+  <section class="hero">
+    <div class="container hero-content">
       <h1>Maine's Trusted Commercial Painting Team</h1>
-      <p class="tagline">Veteran-owned. Detail-driven. Built to last.</p>
-      <a href="#contact" class="cta-button">Get a Free Quote</a>
-      <a href="#projects" class="cta-button secondary">See Our Work</a>
+      <p class="hero-subtitle">Veteran-owned. Detail-driven. Built to last.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+        <a href="#projects" class="btn btn-secondary">See Our Work</a>
+      </div>
       <div class="hero-badge">
         <span>★★★★★</span>
         <p>Over 100+ Projects Completed</p>
       </div>
     </div>
   </section>
-  <!-- ===================== END HERO SECTION ===================== -->
 
-  <!-- ===================== ABOUT SECTION ===================== -->
+  <!-- ========== About Section ========== -->
   <section id="about" class="about-section">
-    <div class="about-content">
+    <div class="container">
       <h2>About Us</h2>
-      <div class="about-flex">
+      <div class="about-content">
         <div class="about-text">
           <h3>We're not just painters. We're builders of first impressions.</h3>
           <p>With 30+ years of combined experience and a veteran background, we bring military precision and unwavering attention to detail to every project. Our mission is simple: show up, deliver sharp work, no BS.</p>
@@ -82,337 +86,130 @@
       </div>
     </div>
   </section>
-  <!-- ===================== END ABOUT SECTION ===================== -->
 
-  <!-- ===================== SERVICES SECTION ===================== -->
+  <!-- ========== Services Section ========== -->
   <section id="services" class="services-section">
-    <h2>Our Services</h2>
-    <p>We deliver high-quality painting and finishing solutions for commercial spaces and large residential exteriors across Maine.</p>
-    <div class="services-grid">
-      <!-- REUSABLE COMPONENT: Service Card -->
-      <div class="service-card">
-        <figure>
+    <div class="container">
+      <h2>Our Services</h2>
+      <p>
+        We deliver high-quality painting and finishing solutions for commercial spaces and large residential exteriors across Maine.
+      </p>
+      <div class="services-grid">
+
+        <!-- Service 1 -->
+        <div class="service-card">
           <img src="images/icon1.png" alt="Surface prep icon">
-        </figure>
-        <div class="service-card-content">
           <h3>Prep & Protection</h3>
-          <p>From power washing to sanding, taping, masking and priming — we prepare every surface with care so your paint lasts.</p>
+          <p>
+            From power washing to sanding, taping, masking and priming — we prepare every surface with care so your paint lasts.
+          </p>
         </div>
-      </div>
-      <div class="service-card">
-        <figure>
+
+        <!-- Service 2 -->
+        <div class="service-card">
           <img src="images/icon2.png" alt="Commercial painting icon">
-        </figure>
-        <div class="service-card-content">
           <h3>Precision Painting</h3>
-          <p>Interior or exterior — we paint commercial buildings, restaurants, and large homes with clean lines and zero shortcuts.</p>
+          <p>
+            Interior or exterior — we paint commercial buildings, restaurants, and large homes with clean lines and zero shortcuts.
+          </p>
         </div>
-      </div>
-      <div class="service-card">
-        <figure>
+
+        <!-- Service 3 -->
+        <div class="service-card">
           <img src="images/icon3.png" alt="Finish coatings icon">
-        </figure>
-        <div class="service-card-content">
           <h3>Finishing & Sealants</h3>
-          <p>Protective coatings, trim detail, stain work, and long-wear finishes — all designed to handle Maine’s toughest weather.</p>
+          <p>
+            Protective coatings, trim detail, stain work, and long-wear finishes — all designed to handle Maine’s toughest weather.
+          </p>
         </div>
-      </div>
-      <!-- END REUSABLE COMPONENT: Service Card -->
-    </div>
-  </section>
-  <!-- ===================== END SERVICES SECTION ===================== -->
 
-  <!-- ===================== QUOTE SECTION ===================== -->
-  <section class="quote-section">
-    <blockquote>"Transforming spaces with precision and passion"</blockquote>
-  </section>
-  <!-- ===================== END QUOTE SECTION ===================== -->
-  <!-- ===================== FEATURED PROJECT SECTION ===================== -->
-  <section id="projects" class="featured-project">
-    <div class="project-layout">
-      <div class="project-image">
-        <img src="images/yosaku.jpg" alt="Yosaku restaurant repaint" />
-      </div>
-      <div class="project-info">
-        <h2>Most Recent Project</h2>
-        <h3>Yosaku Restaurant — Danforth St, Portland</h3>
-        <p>Full interior repaint for a high-traffic Portland eatery — completed on schedule with no downtime for lunch service. Our crew worked around open hours and guest flow to deliver a polished, disruption-free result.</p>
-        <button id="gallery-btn" class="cta-button">View Photos</button>
       </div>
     </div>
   </section>
-  <!-- ===================== END FEATURED PROJECT SECTION ===================== -->
 
-  <!-- ===================== PHOTO GALLERY MODAL ===================== -->
-  <div id="gallery-modal" class="modal">
-    <div class="modal-content">
-      <button id="gallery-close" class="close" aria-label="Close gallery">&times;</button>
-      <div class="carousel">
-        <!-- REUSABLE COMPONENT: Slide -->
-        <div class="slide">
-          <img src="images/project1.jpg" alt="Project photo">
-        </div>
-        <div class="slide">
-          <img src="images/project2.jpg" alt="Project photo">
-        </div>
-        <!-- END REUSABLE COMPONENT: Slide -->
-        <!-- Add up to 8 more slides -->
-      </div>
-      <div class="carousel-controls">
-        <button class="prev">❮</button>
-        <button class="next">❯</button>
-      </div>
-    </div>
-  </div>
-  <!-- ===================== END PHOTO GALLERY MODAL ===================== -->
-
-  <!-- ===================== TESTIMONIALS SECTION ===================== -->
-  <section id="testimonials" class="testimonials-section">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial-card">
-      <div class="testimonial-rating">★★★★★</div>
-      <blockquote>"These guys are the real deal — I won't call anyone else. Professional, punctual, and the attention to detail is impressive."</blockquote>
-      <cite>- John Smith, Yosaku Restaurant</cite>
-    </div>
-  </section>
-  <!-- ===================== END TESTIMONIALS SECTION ===================== -->
-
-  <!-- ===================== CONTACT SECTION ===================== -->
-  <section id="contact" class="contact-section">
-    <h2>Let's Talk About Your Project</h2>
-    <div class="contact-content">
-      <div class="contact-info">
-        <h3>Service Areas</h3>
-        <ul class="service-areas">
-          <li>Greater Portland</li>
-          <li>South Portland</li>
-          <li>Scarborough</li>
-          <li>Westbrook</li>
-          <li>And surrounding areas</li>
-        </ul>
-        <div class="contact-details">
-          <p><strong>Phone:</strong> (207) XXX-XXXX</p>
-          <p><strong>Email:</strong> info@petescommercialpainting.com</p>
-        </div>
-      </div>
-      <div class="contact-form">
-        <a href="#contact" class="cta-button btn-large">Request a Quote</a>
-      </div>
-    </div>
-  </section>
-  <!-- ===================== END CONTACT SECTION ===================== -->
-
-  <!-- ===================== SITE FOOTER ===================== -->
-  <footer class="site-footer">
-    <p>&copy; 2025 Pete's Commercial Painting. All rights reserved.</p>
-  </footer>
-  <!-- ===================== END SITE FOOTER ===================== -->
-
-  <script>
-  // When the menu button is clicked…
-  document.querySelector('.menu-toggle').addEventListener('click', function () {
-    // Toggle the .active class to show/hide menu
-    document.querySelector('.site-nav').classList.toggle('active');
-  });
-  </script>
-
-  <script>
-  // Add scroll detection for nav bar
-  window.addEventListener('scroll', function() {
-    const header = document.querySelector('.site-header');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-  </script>
-
-<!DOCTYPE html> <!-- Tell the browser this is an HTML5 page -->
-<html lang="en"> <!-- Start of the page; language is English -->
-<head> <!-- This section has “behind the scenes” info -->
-  <meta charset="UTF-8"> <!-- Make sure letters like “é” show up correctly -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Make the page look good on phones and computers -->
-  <meta name="description" content="Pete’s Commercial Painting — Maine’s Elite Painters">
-    <!-- Short description for search engines -->
-
-  <!-- Load two nice Google Fonts for headings and body text -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Mulish:wght@300;400&display=swap"
-    rel="stylesheet"
-  >
-  <!-- Google Fonts: Oswald for headings, Inter for body -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- Link to our custom stylesheet where we’ll write CSS later -->
-  <link rel="stylesheet" href="styles.css">
-
-  <title>Pete’s Commercial Painting</title> <!-- The page title in the browser tab -->
-</head>
-
-<body> <!-- Everything you see goes inside here -->
-
-  <!-- ========== Mobile-Friendly Header + Nav ========== -->
-  <header class="site-header">
+  <!-- ========== Projects Section ========== -->
+  <section id="projects" class="projects-section">
     <div class="container">
-
-      <!-- Company logo and name -->
-      <a href="/" class="logo">
-        <img src="images/logo.png" alt="Pete’s Commercial Painting Logo" class="logo-img" />
-        <!-- <h1>Pete’s Commercial Painting</h1> -->
-      </a>
-
-      <!-- Hamburger icon (for small screens only) -->
-      <button class="menu-toggle" aria-label="Toggle menu">
-        ☰
-      </button>
-
-      <!-- Navigation links -->
-      <nav class="site-nav">
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects" id="projects-link">Projects</a></li>
-          <li><a href="#why-us">Why Us</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <!-- Call to Action button -->
-      <a href="#contact" class="btn btn-primary">Request a Quote</a>
-    </div>
-  </header>
-  <!-- ========== End Mobile-Friendly Header + Nav ========== -->
-
-  <!-- ========== Hero Section ========== -->
-  <section class="hero">
-    <div class="container hero-content">
-      <h1>Maine's Trusted Commercial Painting Team</h1>
-      <p class="hero-subtitle">Veteran-owned. Detail-driven. Built to last.</p>
-      <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
-        <a href="#projects" class="btn btn-secondary">See Our Work</a>
+      <h2>Our Projects</h2>
+      <p>Take a look at some of our recent commercial and residential painting projects.</p>
+      
+      <!-- Featured Project -->
+      <div class="project-layout featured-project">
+        <!-- Left: Image -->
+        <div class="project-image">
+          <img src="images/yosaku.jpg" alt="Yosaku restaurant repaint" />
+        </div>
+        <!-- Right: Project Info -->
+        <div class="project-info">
+          <h3>Featured: Yosaku Restaurant</h3>
+          <p>
+            Full interior repaint for a high-traffic Portland eatery — completed on schedule with no downtime for lunch service. Our crew worked around open hours and guest flow to deliver a polished, disruption-free result.
+          </p>
+          <a href="#gallery" class="btn btn-primary">View Photos</a>
+        </div>
       </div>
-      <div class="hero-badge">
-        <span>★★★★★</span>
-        <p>Over 100+ Projects Completed</p>
+      
+      <!-- More Projects Grid -->
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <img src="images/icon1.png" alt="Office building project">
+          <h3>Portland Office Tower</h3>
+          <p>Complete exterior refresh of a 4-story downtown office building.</p>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="project-card">
+          <img src="images/icon2.png" alt="Restaurant project">
+          <h3>Coastal Cafe</h3>
+          <p>Interior and exterior painting with custom color matching to brand colors.</p>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="project-card">
+          <img src="images/icon3.png" alt="Residential project">
+          <h3>Harbor Point Condos</h3>
+          <p>Multi-unit residential complex exterior restoration and painting.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== About Section ========== -->
-  <section id="about" class="about-section">
+  <!-- ========== Why Us Section ========== -->
+  <section id="why-us" class="why-us-section">
     <div class="container">
-      <h2>About Us</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <h3>We're not just painters. We're builders of first impressions.</h3>
-          <p>With 30+ years of combined experience and a veteran background, we bring military precision and unwavering attention to detail to every project. Our mission is simple: show up, deliver sharp work, no BS.</p>
-          <p>Whether it's a restaurant renovation, office upgrade, or large residential project, we treat every surface like it's a showcase of our craft—because it is.</p>
+      <h2>Why Choose Us</h2>
+      <div class="why-us-grid">
+        <!-- Reason 1 -->
+        <div class="why-us-card">
+          <div class="why-us-icon">🎖️</div>
+          <h3>Veteran-Owned</h3>
+          <p>Military precision and attention to detail in everything we do.</p>
         </div>
-        <div class="about-image">
-          <img src="images/team.jpg" alt="Pete's Commercial Painting Team" />
+        
+        <!-- Reason 2 -->
+        <div class="why-us-card">
+          <div class="why-us-icon">⏱️</div>
+          <h3>Always On Time</h3>
+          <p>We respect your schedule and finish projects when promised.</p>
+        </div>
+        
+        <!-- Reason 3 -->
+        <div class="why-us-card">
+          <div class="why-us-icon">🔍</div>
+          <h3>Meticulous Process</h3>
+          <p>We don't cut corners — proper prep, premium materials, perfect finish.</p>
+        </div>
+        
+        <!-- Reason 4 -->
+        <div class="why-us-card">
+          <div class="why-us-icon">🤝</div>
+          <h3>Transparent Pricing</h3>
+          <p>Clear, detailed quotes with no hidden fees or surprises.</p>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ========== Services Section ========== -->
-  <section id="services" class="services-section" style="scroll-margin-top: 150px;">
-    <div class="container">
-      <h2>Our Services</h2>
-      <p>
-        We deliver high-quality painting and finishing solutions for commercial spaces and large residential exteriors across Maine.
-      </p>
-      <div class="services-grid">
-
-        <!-- Service 1 -->
-        <div class="service-card">
-          <figure>
-            <img src="images/icon1.png" alt="Surface prep icon">
-          </figure>
-          <div class="service-card-content">
-            <h3>Prep & Protection</h3>
-            <p>
-              From power washing to sanding, taping, masking and priming — we prepare every surface with care so your paint lasts.
-            </p>
-          </div>
-        </div>
-
-        <!-- Service 2 -->
-        <div class="service-card">
-          <figure>
-            <img src="images/icon2.png" alt="Commercial painting icon">
-          </figure>
-          <div class="service-card-content">
-            <h3>Precision Painting</h3>
-            <p>
-              Interior or exterior — we paint commercial buildings, restaurants, and large homes with clean lines and zero shortcuts.
-            </p>
-          </div>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="service-card">
-          <figure>
-            <img src="images/icon3.png" alt="Finish coatings icon">
-          </figure>
-          <div class="service-card-content">
-            <h3>Finishing & Sealants</h3>
-            <p>
-              Protective coatings, trim detail, stain work, and long-wear finishes — all designed to handle Maine’s toughest weather.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Quote Section ========== -->
-  <section class="quote-section">
-    <div class="container">
-      <blockquote>"Transforming spaces with precision and passion"</blockquote>
-    </div>
-  </section>
-  <!-- ========== Featured Project ========== -->
-  <section id="projects" class="featured-project" style="scroll-margin-top: 100px;">
-    <div class="container project-layout">
-      <!-- Left: Image -->
-      <div class="project-image">
-        <img src="images/yosaku.jpg" alt="Yosaku restaurant repaint" />
-      </div>
-      <!-- Right: Project Info -->
-      <div class="project-info">
-        <h2>Most Recent Project</h2>
-        <h3>Yosaku Restaurant — Danforth St, Portland</h3>
-        <p>
-          Full interior repaint for a high-traffic Portland eatery — completed on schedule with no downtime for lunch service. Our crew worked around open hours and guest flow to deliver a polished, disruption-free result.
-        </p>
-        <button id="gallery-btn" class="btn btn-primary">View Photos</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Photo Gallery Modal -->
-  <div id="gallery-modal" class="modal">
-    <div class="modal-content">
-      <button id="gallery-close" class="close" aria-label="Close gallery">&times;</button>
-      <div class="carousel">
-        <div class="slide">
-          <img src="images/project1.jpg" alt="Project photo">
-        </div>
-        <div class="slide">
-          <img src="images/project2.jpg" alt="Project photo">
-        </div>
-        <!-- Add up to 8 more slides -->
-      </div>
-      <div class="carousel-controls">
-        <button class="prev">❮</button>
-        <button class="next">❯</button>
-      </div>
-    </div>
-  </div>
 
   <!-- ========== Testimonials Section ========== -->
   <section id="testimonials" class="testimonials-section">
@@ -432,21 +229,64 @@
       <h2>Let's Talk About Your Project</h2>
       <div class="contact-content">
         <div class="contact-info">
-          <h3>Service Areas</h3>
+          <h3>We Proudly Serve The Following Areas:</h3>
           <ul class="service-areas">
             <li>Greater Portland</li>
             <li>South Portland</li>
             <li>Scarborough</li>
             <li>Westbrook</li>
-            <li>And surrounding areas</li>
+            <li>Cape Elizabeth</li>
+            <li>Falmouth</li>
+            <li>And surrounding areas in Southern Maine</li>
           </ul>
           <div class="contact-details">
-            <p><strong>Phone:</strong> (207) XXX-XXXX</p>
-            <p><strong>Email:</strong> info@petescommercialpainting.com</p>
+            <p><strong>Phone:</strong> (208) 281-0525</p>
+            <p><strong>Email:</strong> support@pcp207.com</p>
+            <p class="contact-tagline">Whether you have questions about a specific service or want to discuss your upcoming project, we're here to help.</p>
           </div>
         </div>
-        <div class="contact-form">
-          <a href="#contact" class="btn btn-primary btn-large">Request a Quote</a>
+        <div class="contact-form-container">
+          <h3>Get A Free Quote</h3>
+          <form class="contact-form" action="https://formspree.io/f/movwbobg" method="POST">
+            <!-- Hidden field for email subject -->
+            <input type="hidden" name="_subject" value="New Quote Request from PCP207 Website">
+            <!-- Hidden field to redirect after submission -->
+            <input type="hidden" name="_next" value="/thanks.html">
+            
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Your email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+            </div>
+            
+            <div class="form-group">
+              <label for="project-type">Project Type</label>
+              <select id="project-type" name="project" required>
+                <option value="" disabled selected>Select project type</option>
+                <option value="Commercial Interior">Commercial Interior</option>
+                <option value="Commercial Exterior">Commercial Exterior</option>
+                <option value="Residential Exterior">Residential Exterior</option>
+                <option value="Specialty Finishes">Specialty Finishes</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group full-width">
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us about your project" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-large">Submit Request</button>
+          </form>
         </div>
       </div>
     </div>
@@ -459,584 +299,23 @@
     </div>
   </footer>
 
+  <!-- Include our JavaScript file -->
+  <script src="scripts.js"></script>
+  
+  <!-- Script to ensure page loads at the top when coming from thank-you page -->
   <script>
-  // When the menu button is clicked…
-  document.querySelector('.menu-toggle').addEventListener('click', function () {
-    // Toggle the .active class to show/hide menu
-    document.querySelector('.site-nav').classList.toggle('active');
-  });
-  </script>
-
-  <script>
-  // Add scroll detection for nav bar
-  window.addEventListener('scroll', function() {
-    const header = document.querySelector('.site-header');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+    // Check if we arrived from the thank-you page
+    if (document.referrer.includes('thanks.html')) {
+      // Force scroll to top
+      window.scrollTo(0, 0);
     }
-  });
-  </script>
-
-<!DOCTYPE html> <!-- Tell the browser this is an HTML5 page -->
-<html lang="en"> <!-- Start of the page; language is English -->
-<head> <!-- This section has “behind the scenes” info -->
-  <meta charset="UTF-8"> <!-- Make sure letters like “é” show up correctly -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Make the page look good on phones and computers -->
-  <meta name="description" content="Pete’s Commercial Painting — Maine’s Elite Painters">
-    <!-- Short description for search engines -->
-
-  <!-- Load two nice Google Fonts for headings and body text -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Mulish:wght@300;400&display=swap"
-    rel="stylesheet"
-  >
-  <!-- Google Fonts: Oswald for headings, Inter for body -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- Link to our custom stylesheet where we’ll write CSS later -->
-  <link rel="stylesheet" href="styles.css">
-
-  <title>Pete’s Commercial Painting</title> <!-- The page title in the browser tab -->
-</head>
-
-<body> <!-- Everything you see goes inside here -->
-
-  <!-- ========== Mobile-Friendly Header + Nav ========== -->
-  <header class="site-header">
-    <div class="container">
-
-      <!-- Company logo and name -->
-      <a href="/" class="logo">
-        <img src="images/logo.png" alt="Pete’s Commercial Painting Logo" class="logo-img" />
-        <!-- <h1>Pete’s Commercial Painting</h1> -->
-      </a>
-
-      <!-- Hamburger icon (for small screens only) -->
-      <button class="menu-toggle" aria-label="Toggle menu">
-        ☰
-      </button>
-
-      <!-- Navigation links -->
-      <nav class="site-nav">
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects" id="projects-link">Projects</a></li>
-          <li><a href="#why-us">Why Us</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <!-- Call to Action button -->
-      <a href="#contact" class="btn btn-primary">Request a Quote</a>
-    </div>
-  </header>
-  <!-- ========== End Mobile-Friendly Header + Nav ========== -->
-
-  <!-- ========== Hero Section ========== -->
-  <section class="hero">
-    <div class="container hero-content">
-      <h1>Maine's Trusted Commercial Painting Team</h1>
-      <p class="hero-subtitle">Veteran-owned. Detail-driven. Built to last.</p>
-      <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
-        <a href="#projects" class="btn btn-secondary">See Our Work</a>
-      </div>
-      <div class="hero-badge">
-        <span>★★★★★</span>
-        <p>Over 100+ Projects Completed</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== About Section ========== -->
-  <section id="about" class="about-section">
-    <div class="container">
-      <h2>About Us</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <h3>We're not just painters. We're builders of first impressions.</h3>
-          <p>With 30+ years of combined experience and a veteran background, we bring military precision and unwavering attention to detail to every project. Our mission is simple: show up, deliver sharp work, no BS.</p>
-          <p>Whether it's a restaurant renovation, office upgrade, or large residential project, we treat every surface like it's a showcase of our craft—because it is.</p>
-        </div>
-        <div class="about-image">
-          <img src="images/team.jpg" alt="Pete's Commercial Painting Team" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Services Section ========== -->
-  <section id="services" class="services-section" style="scroll-margin-top: 150px;">
-    <div class="container">
-      <h2>Our Services</h2>
-      <p>
-        We deliver high-quality painting and finishing solutions for commercial spaces and large residential exteriors across Maine.
-      </p>
-      <div class="services-grid">
-
-        <!-- Service 1 -->
-        <div class="service-card">
-          <figure>
-            <img src="images/icon1.png" alt="Surface prep icon">
-          </figure>
-          <div class="service-card-content">
-            <h3>Prep & Protection</h3>
-            <p>
-              From power washing to sanding, taping, masking and priming — we prepare every surface with care so your paint lasts.
-            </p>
-          </div>
-        </div>
-
-        <!-- Service 2 -->
-        <div class="service-card">
-          <figure>
-            <img src="images/icon2.png" alt="Commercial painting icon">
-          </figure>
-          <div class="service-card-content">
-            <h3>Precision Painting</h3>
-            <p>
-              Interior or exterior — we paint commercial buildings, restaurants, and large homes with clean lines and zero shortcuts.
-            </p>
-          </div>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="service-card">
-          <figure>
-            <img src="images/icon3.png" alt="Finish coatings icon">
-          </figure>
-          <div class="service-card-content">
-            <h3>Finishing & Sealants</h3>
-            <p>
-              Protective coatings, trim detail, stain work, and long-wear finishes — all designed to handle Maine’s toughest weather.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Quote Section ========== -->
-  <section class="quote-section">
-    <div class="container">
-      <blockquote>"Transforming spaces with precision and passion"</blockquote>
-    </div>
-  </section>
-  <!-- ========== Featured Project ========== -->
-  <section id="projects" class="featured-project" style="scroll-margin-top: 100px;">
-    <div class="container project-layout">
-      <!-- Left: Image -->
-      <div class="project-image">
-        <img src="images/yosaku.jpg" alt="Yosaku restaurant repaint" />
-      </div>
-      <!-- Right: Project Info -->
-      <div class="project-info">
-        <h2>Most Recent Project</h2>
-        <h3>Yosaku Restaurant — Danforth St, Portland</h3>
-        <p>
-          Full interior repaint for a high-traffic Portland eatery — completed on schedule with no downtime for lunch service. Our crew worked around open hours and guest flow to deliver a polished, disruption-free result.
-        </p>
-        <button id="gallery-btn" class="btn btn-primary">View Photos</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Photo Gallery Modal -->
-  <div id="gallery-modal" class="modal">
-    <div class="modal-content">
-      <button id="gallery-close" class="close" aria-label="Close gallery">&times;</button>
-      <div class="carousel">
-        <div class="slide">
-          <img src="images/project1.jpg" alt="Project photo">
-        </div>
-        <div class="slide">
-          <img src="images/project2.jpg" alt="Project photo">
-        </div>
-        <!-- Add up to 8 more slides -->
-      </div>
-      <div class="carousel-controls">
-        <button class="prev">❮</button>
-        <button class="next">❯</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========== Testimonials Section ========== -->
-  <section id="testimonials" class="testimonials-section">
-    <div class="container">
-      <h2>What Our Clients Say</h2>
-      <div class="testimonial-card">
-        <div class="testimonial-rating">★★★★★</div>
-        <blockquote>"These guys are the real deal — I won't call anyone else. Professional, punctual, and the attention to detail is impressive."</blockquote>
-        <cite>- John Smith, Yosaku Restaurant</cite>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Contact Section ========== -->
-  <section id="contact" class="contact-section">
-    <div class="container">
-      <h2>Let's Talk About Your Project</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <h3>Service Areas</h3>
-          <ul class="service-areas">
-            <li>Greater Portland</li>
-            <li>South Portland</li>
-            <li>Scarborough</li>
-            <li>Westbrook</li>
-            <li>And surrounding areas</li>
-          </ul>
-          <div class="contact-details">
-            <p><strong>Phone:</strong> (207) XXX-XXXX</p>
-            <p><strong>Email:</strong> info@petescommercialpainting.com</p>
-          </div>
-        </div>
-        <div class="contact-form">
-          <a href="#contact" class="btn btn-primary btn-large">Request a Quote</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Footer ========== -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Pete's Commercial Painting. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-  // When the menu button is clicked…
-  document.querySelector('.menu-toggle').addEventListener('click', function () {
-    // Toggle the .active class to show/hide menu
-    document.querySelector('.site-nav').classList.toggle('active');
-  });
-  </script>
-
-  <script>
-  // Add scroll detection for nav bar
-  window.addEventListener('scroll', function() {
-    const header = document.querySelector('.site-header');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+    
+    // Ensure anchor links to #top always go to the very top
+    if (window.location.hash === '#top') {
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+      }, 0);
     }
-  });
   </script>
-
-<!DOCTYPE html> <!-- Tell the browser this is an HTML5 page -->
-<html lang="en"> <!-- Start of the page; language is English -->
-<head> <!-- This section has “behind the scenes” info -->
-  <meta charset="UTF-8"> <!-- Make sure letters like “é” show up correctly -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Make the page look good on phones and computers -->
-  <meta name="description" content="Pete’s Commercial Painting — Maine’s Elite Painters">
-    <!-- Short description for search engines -->
-
-  <!-- Load two nice Google Fonts for headings and body text -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Mulish:wght@300;400&display=swap"
-    rel="stylesheet"
-  >
-  <!-- Google Fonts: Oswald for headings, Inter for body -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- Link to our custom stylesheet where we’ll write CSS later -->
-  <link rel="stylesheet" href="styles.css">
-
-  <title>Pete’s Commercial Painting</title> <!-- The page title in the browser tab -->
-</head>
-
-<body> <!-- Everything you see goes inside here -->
-
-  <!-- ========== Mobile-Friendly Header + Nav ========== -->
-  <header class="site-header">
-    <div class="container">
-
-      <!-- Company logo and name -->
-      <a href="/" class="logo">
-        <img src="images/logo.png" alt="Pete’s Commercial Painting Logo" class="logo-img" />
-        <!-- <h1>Pete’s Commercial Painting</h1> -->
-      </a>
-
-      <!-- Hamburger icon (for small screens only) -->
-      <button class="menu-toggle" aria-label="Toggle menu">
-        ☰
-      </button>
-
-      <!-- Navigation links -->
-      <nav class="site-nav">
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects" id="projects-link">Projects</a></li>
-          <li><a href="#why-us">Why Us</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <!-- Call to Action button -->
-      <a href="#contact" class="btn btn-primary">Request a Quote</a>
-    </div>
-  </header>
-  <!-- ========== End Mobile-Friendly Header + Nav ========== -->
-
-  <!-- ========== Hero Section ========== -->
-  <section class="hero">
-    <div class="container hero-content">
-      <h1>Maine's Trusted Commercial Painting Team</h1>
-      <p class="hero-subtitle">Veteran-owned. Detail-driven. Built to last.</p>
-      <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
-        <a href="#projects" class="btn btn-secondary">See Our Work</a>
-      </div>
-      <div class="hero-badge">
-        <span>★★★★★</span>
-        <p>Over 100+ Projects Completed</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== About Section ========== -->
-  <section id="about" class="about-section">
-    <div class="container">
-      <h2>About Us</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <h3>We're not just painters. We're builders of first impressions.</h3>
-          <p>With 30+ years of combined experience and a veteran background, we bring military precision and unwavering attention to detail to every project. Our mission is simple: show up, deliver sharp work, no BS.</p>
-          <p>Whether it's a restaurant renovation, office upgrade, or large residential project, we treat every surface like it's a showcase of our craft—because it is.</p>
-        </div>
-        <div class="about-image">
-          <img src="images/team.jpg" alt="Pete's Commercial Painting Team" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Services Section ========== -->
-  <section id="services" class="services-section" style="scroll-margin-top: 150px;">
-    <div class="container">
-      <h2>Our Services</h2>
-      <p>
-        We deliver high-quality painting and finishing solutions for commercial spaces and large residential exteriors across Maine.
-      </p>
-      <div class="services-grid">
-
-        <!-- Service 1 -->
-        <div class="service-card">
-          <figure>
-            <img src="images/icon1.png" alt="Surface prep icon">
-          </figure>
-          <div class="service-card-content">
-            <h3>Prep & Protection</h3>
-            <p>
-              From power washing to sanding, taping, masking and priming — we prepare every surface with care so your paint lasts.
-            </p>
-          </div>
-        </div>
-
-        <!-- Service 2 -->
-        <div class="service-card">
-          <figure>
-            <img src="images/icon2.png" alt="Commercial painting icon">
-          </figure>
-          <div class="service-card-content">
-            <h3>Precision Painting</h3>
-            <p>
-              Interior or exterior — we paint commercial buildings, restaurants, and large homes with clean lines and zero shortcuts.
-            </p>
-          </div>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="service-card">
-          <figure>
-            <img src="images/icon3.png" alt="Finish coatings icon">
-          </figure>
-          <div class="service-card-content">
-            <h3>Finishing & Sealants</h3>
-            <p>
-              Protective coatings, trim detail, stain work, and long-wear finishes — all designed to handle Maine’s toughest weather.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Quote Section ========== -->
-  <section class="quote-section">
-    <div class="container">
-      <blockquote>"Transforming spaces with precision and passion"</blockquote>
-    </div>
-  </section>
-  <!-- ========== Featured Project ========== -->
-  <section id="projects" class="featured-project" style="scroll-margin-top: 100px;">
-    <div class="container project-layout">
-      <!-- Left: Image -->
-      <div class="project-image">
-        <img src="images/yosaku.jpg" alt="Yosaku restaurant repaint" />
-      </div>
-      <!-- Right: Project Info -->
-      <div class="project-info">
-        <h2>Most Recent Project</h2>
-        <h3>Yosaku Restaurant — Danforth St, Portland</h3>
-        <p>
-          Full interior repaint for a high-traffic Portland eatery — completed on schedule with no downtime for lunch service. Our crew worked around open hours and guest flow to deliver a polished, disruption-free result.
-        </p>
-        <button id="gallery-btn" class="btn btn-primary">View Photos</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Photo Gallery Modal -->
-  <div id="gallery-modal" class="modal">
-    <div class="modal-content">
-      <button id="gallery-close" class="close" aria-label="Close gallery">&times;</button>
-      <div class="carousel">
-        <div class="slide">
-          <img src="images/project1.jpg" alt="Project photo">
-        </div>
-        <div class="slide">
-          <img src="images/project2.jpg" alt="Project photo">
-        </div>
-        <!-- Add up to 8 more slides -->
-      </div>
-      <div class="carousel-controls">
-        <button class="prev">❮</button>
-        <button class="next">❯</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========== Testimonials Section ========== -->
-  <section id="testimonials" class="testimonials-section">
-    <div class="container">
-      <h2>What Our Clients Say</h2>
-      <div class="testimonial-card">
-        <div class="testimonial-rating">★★★★★</div>
-        <blockquote>"These guys are the real deal — I won't call anyone else. Professional, punctual, and the attention to detail is impressive."</blockquote>
-        <cite>- John Smith, Yosaku Restaurant</cite>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Contact Section ========== -->
-  <section id="contact" class="contact-section">
-    <div class="container">
-      <h2>Let's Talk About Your Project</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <h3>Service Areas</h3>
-          <ul class="service-areas">
-            <li>Greater Portland</li>
-            <li>South Portland</li>
-            <li>Scarborough</li>
-            <li>Westbrook</li>
-            <li>And surrounding areas</li>
-          </ul>
-          <div class="contact-details">
-            <p><strong>Phone:</strong> (207) XXX-XXXX</p>
-            <p><strong>Email:</strong> info@petescommercialpainting.com</p>
-          </div>
-        </div>
-        <div class="contact-form">
-          <a href="#contact" class="btn btn-primary btn-large">Request a Quote</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== Footer ========== -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Pete's Commercial Painting. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-  // When the menu button is clicked…
-  document.querySelector('.menu-toggle').addEventListener('click', function () {
-    // Toggle the .active class to show/hide menu
-    document.querySelector('.site-nav').classList.toggle('active');
-  });
-  </script>
-
-  <script>
-  // Add scroll detection for nav bar
-  window.addEventListener('scroll', function() {
-    const header = document.querySelector('.site-header');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-  </script>
-
-  <script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Gallery Modal Functionality
-  const modal = document.getElementById('gallery-modal');
-  const btn = document.getElementById('gallery-btn');
-  const closeBtn = document.getElementById('gallery-close');
-
-  // Open modal
-  btn.addEventListener('click', () => {
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-  });
-
-  // Only close modal when clicking the close button (X)
-  closeBtn.addEventListener('click', function() {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  });
-
-  // Carousel Functionality
-  let slideIndex = 0;
-  const slides = document.querySelectorAll('.slide');
-
-  function showSlide(n) {
-    // Reset index if out of bounds
-    if (n >= slides.length) slideIndex = 0;
-    if (n < 0) slideIndex = slides.length - 1;
-
-    // Hide all slides
-    slides.forEach(slide => slide.style.display = 'none');
-
-    // Show current slide
-    slides[slideIndex].style.display = 'block';
-  }
-
-  // Initialize first slide
-  showSlide(slideIndex);
-
-  // Navigation
-  document.querySelector('.prev').addEventListener('click', () => {
-    slideIndex--;
-    showSlide(slideIndex);
-  });
-
-  document.querySelector('.next').addEventListener('click', () => {
-    slideIndex++;
-    showSlide(slideIndex);
-  });
-});
-</script>
-
-</body>
-</html>
-
-</body>
-</html>
-
 </body>
 </html>
