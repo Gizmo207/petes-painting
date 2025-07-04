@@ -100,7 +100,7 @@ html {
   display: flex;                /* Put logo and navigation side-by-side */
   align-items: center;          /* Center elements vertically */
   justify-content: space-between; /* Push logo left, navigation right */
-  padding: var(--spacer) 0;     /* Space above & below */
+  padding: 0.75rem 0;          /* Reduced padding to fix extra space */
 }
 
 /* 7. Logo area */
@@ -126,8 +126,8 @@ html {
 
 /* Specific styling for the logo image */
 .logo-img {
-  width: 234px !important;           /* Force this exact width */
-  height: 117px !important;          /* Force this exact height for better visibility */
+  width: 180px !important;           /* Reduced width for better fit */
+  height: 90px !important;           /* Reduced height to eliminate extra space */
   object-fit: contain;               /* Prevents distortion of the image */
   display: block;                    /* Makes the image a block element */
 }
@@ -297,6 +297,12 @@ html {
     text-align: center;             /* Center text */
     margin-top: 1rem;               /* Space above button */
   }
+
+  /* Adjust separator image height on mobile */
+  .services-separator {
+    height: 200px;                       /* Smaller height on mobile */
+    margin-top: 3rem;                    /* Less space above on mobile */
+  }
 }
 
 /* ========== Hero Section ========== */
@@ -406,6 +412,25 @@ html {
   gap: 2.5rem;                       /* Increased space between cards */
   margin-top: 3rem;                  /* Increased space above the grid */
   padding: 0.5rem;                   /* Small padding to allow for hover shadow */
+}
+
+/* Services section image separator */
+/* This is the full-width image that separates services from projects section */
+.services-separator {
+  margin-top: 5rem;                     /* Space above the separator */
+  position: relative;                   /* Positioning context */
+  height: 300px;                        /* Fixed height */
+  overflow: hidden;                     /* Hide overflow */
+  width: 100%;                          /* Full width */
+}
+
+/* The actual separator image */
+.separator-image {
+  width: 100%;                          /* Full width */
+  height: 100%;                         /* Full height of container */
+  object-fit: cover;                    /* Cover the area without distortion */
+  object-position: center;              /* Center the image */
+  display: block;                       /* Block display */
 }
 
 /* ========== Why Us Section ========== */
@@ -833,6 +858,12 @@ cite {
   /* Adjust hero badge spacing for mobile */
   .hero-badge {
     margin-top: 1rem;                /* More space above badge */
+  }
+
+  /* Adjust separator image height on mobile */
+  .services-separator {
+    height: 200px;                       /* Smaller height on mobile */
+    margin-top: 3rem;                    /* Less space above on mobile */
   }
 }
 
