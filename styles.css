@@ -19,6 +19,7 @@ body {
   font-family: 'Inter', sans-serif;  /* Modern, clean font for all general text */
   background: var(--color-bg);       /* Light gray background for the whole site */
   color: var(--color-text);          /* Dark text for good contrast and readability */
+  overflow-x: hidden;                /* Prevent horizontal scrolling on mobile */
 }
 
 /* Make all headings use the Oswald font and blue color */
@@ -39,7 +40,7 @@ h1, h2, h3 {
   /* Orange color when you hover */
   --color-accent: #e57a44;                   /* Orange for interactive elements */
   /* Standard spacing unit */
-  --spacer: 1.5rem;                          /* Consistent spacing throughout site */
+  --spacer: 1rem;                           /* Smaller spacing for mobile first */
 }
 
 /* 2. Reset default spacing & box sizing */
@@ -62,15 +63,15 @@ body {
 /* This ensures when you click navigation links, it scrolls smoothly and doesn't hide content under the header */
 html {
   scroll-behavior: smooth;     /* Enable smooth scrolling instead of jumping */
-  scroll-padding-top: 120px;   /* Add padding to account for fixed header */
+  scroll-padding-top: 80px;    /* Add padding to account for fixed header - smaller for mobile */
 }
 
 /* 4. Container to center content */
 /* This class is used to keep content centered and at a reasonable width */
 .container {
-  max-width: 1200px;          /* Don't get wider than this */
-  margin: 0 auto;             /* Center on the page */
-  padding: 0 var(--spacer);   /* Space on left & right */
+  width: 100%;               /* Full width on mobile */
+  margin: 0 auto;            /* Center on the page */
+  padding: 0 var(--spacer);  /* Space on left & right */
 }
 
 /* 5. Header bar styling */
@@ -84,6 +85,7 @@ html {
   z-index: 1000;                                       /* Sit above other things */
   border-bottom: 3px solid var(--color-primary);       /* Adding blue border */
   transition: all 0.3s ease-in-out;                    /* Smooth transition for color changes */
+  width: 100%;                                         /* Full width */
 }
 
 /* Header styling when scrolled */
@@ -98,6 +100,7 @@ html {
 /* Controls how elements are arranged within the header bar */
 .site-header .container {
   display: flex;                /* Put logo and navigation side-by-side */
+  flex-wrap: wrap;              /* Allow elements to wrap on mobile */
   align-items: center;          /* Center elements vertically */
   justify-content: space-between; /* Push logo left, navigation right */
   padding: 0.75rem 0;          /* Reduced padding to fix extra space */
@@ -114,20 +117,20 @@ html {
 
 /* Style for the logo image */
 .logo img {
-  height: 50px;           /* Make the logo picture 50px tall */
+  height: 40px;           /* Make the logo picture smaller on mobile */
   margin-right: 0.75rem;  /* Space between image and text */
 }
 
 /* Style for the text next to the logo */
 .logo h1 {
   font-family: var(--font-heading); /* Use our title font */
-  font-size: 1.5rem;               /* Make it a bit bigger */
+  font-size: 1.25rem;              /* Smaller on mobile */
 }
 
 /* Specific styling for the logo image */
 .logo-img {
-  width: 180px !important;           /* Reduced width for better fit */
-  height: 90px !important;           /* Reduced height to eliminate extra space */
+  width: 140px !important;           /* Smaller width for mobile */
+  height: 70px !important;           /* Smaller height for mobile */
   object-fit: contain;               /* Prevents distortion of the image */
   display: block;                    /* Makes the image a block element */
 }
@@ -140,13 +143,32 @@ html {
 }
 
 /* 8. Navigation menu */
-/* Styles for the navigation links in the header */
+/* Mobile-first menu styling */
+.site-nav {
+  width: 100%;                /* Full width on mobile */
+  display: none;              /* Hidden by default */
+  margin-top: 1rem;          /* Space between logo and menu */
+  overflow: hidden;          /* Prevent overflow */
+  transition: max-height 0.3s ease; /* Smooth open/close transition */
+}
+
+/* When the mobile menu is active (open) */
+.site-nav.active {
+  display: block;            /* Show the menu when active */
+}
+
+/* Navigation menu list */
 .site-nav ul {
-  display: flex;      /* Put links side by side in a row */
-  list-style: none;   /* Remove bullet points from list */
-  gap: 2.5rem;        /* Space between each navigation item */
-  margin: 0;          /* Remove default margin */
-  padding: 0;         /* Remove default padding */
+  display: flex;             /* Flex container */
+  flex-direction: column;    /* Stack vertically on mobile */
+  list-style: none;          /* Remove bullet points */
+  gap: 0;                    /* No gap between items on mobile */
+}
+
+/* Navigation menu items */
+.site-nav li {
+  width: 100%;              /* Full width for tap target */
+  text-align: center;       /* Center text on mobile */
 }
 
 /* Style for the individual navigation links */
@@ -154,14 +176,17 @@ html {
   text-decoration: none;        /* Remove underline from links */
   font-weight: 600;             /* Make text semi-bold */
   color: #fff;                  /* White text color */
-  font-size: 1.2rem;            /* Larger text for better visibility */
-  padding: 0.75rem 1.5rem;      /* Space around text for larger clickable area */
+  font-size: 1.1rem;            /* Slightly smaller for mobile */
+  padding: 0.75rem 1rem;        /* Good tap target size */
+  display: block;               /* Make full width clickable */
   transition: color 0.2s;       /* Smooth color change on hover */
+  border-bottom: 1px solid rgba(255,255,255,0.1); /* Subtle separators */
 }
 
 /* Navigation links change color on hover */
 .site-nav a:hover {
   color: var(--color-accent);   /* Change to orange when mouse hovers */
+  background-color: rgba(255,255,255,0.05); /* Subtle highlight */
 }
 
 /* Navigation styling when scrolled */
@@ -175,6 +200,20 @@ html {
   color: var(--color-accent);   /* Change to orange on hover even when scrolled */
 }
 
+/* Hamburger menu button - visible on mobile */
+.menu-toggle {
+  display: block;               /* Always show on mobile */
+  background: transparent;      /* Transparent background */
+  border: 2px solid white;      /* White border for visibility */
+  color: white;                 /* White color */
+  font-size: 1.5rem;            /* Large enough to tap */
+  padding: 0.25rem 0.5rem;      /* Comfortable tap target */
+  cursor: pointer;              /* Pointer cursor on hover */
+  border-radius: 4px;           /* Rounded corners */
+  margin-right: 0.5rem;         /* Add some margin */
+  z-index: 1001;                /* Stay above other elements */
+}
+
 /* 9. Button styles */
 /* Basic shared styles for all buttons */
 .btn {
@@ -184,6 +223,7 @@ html {
   text-decoration: none;            /* No underline on button links */
   border-radius: 4px;               /* Slightly rounded corners */
   transition: background 0.3s;      /* Smooth color fade when hovering */
+  text-align: center;               /* Center text for mobile */
 }
 
 /* Primary (orange) button style */
@@ -191,768 +231,779 @@ html {
   background: var(--color-accent);  /* Orange background */
   color: #fff;                      /* White text */
   border: none;                     /* No border */
-  padding: 0.75rem 2rem;            /* More padding for larger button */
+  padding: 0.75rem 1.5rem;          /* Smaller padding on mobile */
   border-radius: 4px;               /* Rounded corners */
   font-weight: 600;                 /* Semi-bold text */
-  font-size: 1.1rem;                /* Slightly larger text */
+  font-size: 1rem;                  /* Smaller text on mobile */
   cursor: pointer;                  /* Show hand cursor on hover */
   transition: background 0.2s;      /* Smooth color transition */
 }
 
-/* Primary button gets darker when hovered */
+/* Button hover effect */
 .btn-primary:hover {
-  background: #cf5e23;              /* Darker orange on hover */
-}
-
-/* Header CTA button when scrolled */
-/* Keeps the call-to-action button orange when page is scrolled */
-.site-header.scrolled .btn-primary {
-  background: var(--color-accent);  /* Keep orange background */
-  color: white;                     /* Keep white text */
-}
-
-/* Header CTA button hover effect when scrolled */
-.site-header.scrolled .btn-primary:hover {
-  background: #cf5e23;              /* Darker orange on hover */
+  background: #d86a34;              /* Darker orange on hover */
 }
 
 /* Secondary (outline) button style */
 .btn-secondary {
-  background: transparent;          /* No background */
-  border: 2px solid white;          /* White border */
-  color: white;                     /* White text */
+  background: transparent;          /* Transparent background */
+  color: var(--color-primary);      /* Blue text */
+  border: 2px solid var(--color-primary); /* Blue border */
+  padding: 0.75rem 1.5rem;          /* Smaller padding on mobile */
+  font-weight: 600;                 /* Semi-bold text */
+  font-size: 1rem;                  /* Smaller text on mobile */
 }
 
-/* Secondary button gets slightly lighter when hovered */
+/* Secondary button hover effect */
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.1); /* Slight white background on hover */
+  background: rgba(26, 79, 139, 0.1); /* Light blue background on hover */
 }
 
-/* Card borders and subtle dividers */
-/* Adds styling to cards for visual separation and depth */
-.service-card, .project-card {
-  border: 1px solid var(--color-border); /* Light gray border */
-  background: white;                     /* White background */
-  border-radius: 8px;                    /* Rounded corners */
-  padding: 2rem;                         /* Space inside card */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow for depth */
-  transition: transform 0.3s, box-shadow 0.3s; /* Smooth animation for hover effects */
-}
-
-/* Hover effect for service and project cards */
-.service-card:hover, .project-card:hover {
-  transform: translateY(-5px);           /* Card moves up slightly when hovered */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Enhanced shadow when hovered */
-}
-
-/* ========== Responsive Navigation ========== */
-/* This section handles the mobile menu button and behavior */
-
-/* Mobile menu button (hamburger icon) */
-/* Only visible on small screens */
-.menu-toggle {
-  display: none;                    /* Hidden by default on large screens */
-  font-size: 2rem;                  /* Large text for the menu icon */
-  background: none;                 /* No background */
-  border: none;                     /* No border */
-  color: var(--color-primary);      /* Blue color */
-  cursor: pointer;                  /* Hand cursor on hover */
-}
-
-/* Media query for small screens (mobile) */
-/* These styles only apply when the screen is 768px wide or less */
-@media (max-width: 768px) {
-  /* Adjust header layout for mobile */
-  .site-header .container {
-    flex-wrap: wrap;                /* Allow elements to wrap to next line */
-    justify-content: space-between; /* Space between logo and menu button */
-  }
-
-  /* Show the mobile menu button */
-  .menu-toggle {
-    display: block;                 /* Make the hamburger icon visible */
-  }
-
-  /* Navigation menu in mobile view */
-  .site-nav {
-    width: 100%;                    /* Full width */
-    display: none;                  /* Hidden by default */
-    margin-top: 1rem;               /* Space above the mobile menu */
-  }
-
-  /* Navigation menu when active (clicked) */
-  .site-nav.active {
-    display: block;                 /* Show the menu when active */
-  }
-
-  /* Navigation links in mobile view */
-  .site-nav ul {
-    flex-direction: column;         /* Stack links vertically */
-    gap: 1rem;                      /* Space between links */
-  }
-
-  /* Buttons in mobile view */
-  .btn-primary {
-    width: 100%;                    /* Full width buttons */
-    text-align: center;             /* Center text */
-    margin-top: 1rem;               /* Space above button */
-  }
-
-  /* Adjust separator image height on mobile */
-  .services-separator {
-    height: 200px;                       /* Smaller height on mobile */
-    margin-top: 3rem;                    /* Less space above on mobile */
-  }
-}
-
-/* ========== Hero Section ========== */
-/* This is the large banner area at the top of the homepage */
-.hero {
-  background: var(--color-primary);  /* Blue background */
-  color: white;                      /* White text */
-  padding: 6rem 0;                   /* Large space top and bottom */
-  position: relative;                /* Position for overlay */
-  overflow: hidden;                  /* Hide anything that goes outside */
-  display: flex;                     /* Use flexbox for centering */
-  align-items: center;               /* Center content vertically */
-  justify-content: center;           /* Center content horizontally */
-  min-height: 50vh;                  /* At least 50% of viewport height */
-  background-size: cover;            /* Make background image cover the area */
-  background-position: center;       /* Center the background image */
-}
-
-/* Optional hero overlay for better text visibility with image backgrounds */
-/* This adds a semi-transparent blue layer over background images */
-.hero::before {
-  content: '';                                   /* Required for pseudo-element */
-  position: absolute;                            /* Position over the entire hero */
-  top: 0;                                        /* Align to top */
-  left: 0;                                       /* Align to left */
-  width: 100%;                                   /* Full width */
-  height: 100%;                                  /* Full height */
-  background: rgba(26, 62, 95, 0.7);             /* Semi-transparent blue overlay */
-  z-index: 1;                                    /* Layer between background and content */
-  pointer-events: none;                          /* Let clicks go through to content beneath */
-  display: none;                                 /* Hidden by default, enable when using background images */
-}
-
-/* Main content container within hero */
-.hero-content {
-  max-width: 800px;                  /* Limit width for readability */
-  margin: 0 auto;                    /* Center horizontally */
-  text-align: center;                /* Center text */
-  display: flex;                     /* Use flexbox for layout */
-  flex-direction: column;            /* Stack items vertically */
-  align-items: center;               /* Center items horizontally */
-  justify-content: center;           /* Center items vertically */
-  position: relative;                /* Position context for z-index */
-  z-index: 2;                        /* Place content above the overlay */
-}
-
-/* Main headline in hero section */
-.hero h1 {
-  font-size: 3.5rem;                 /* Very large text */
-  margin-bottom: 1rem;               /* Space below heading */
-  color: white;                      /* White text */
-  width: 100%;                       /* Full width */
-}
-
-/* Subtitle text in hero section */
-.hero-subtitle {
-  font-size: 1.5rem;                 /* Large text but smaller than heading */
-  margin-bottom: 2rem;               /* Space below subtitle */
-  opacity: 0.9;                      /* Slightly transparent */
-  width: 100%;                       /* Full width */
-}
-
-/* Badge or special note in hero (like "Licensed & Insured") */
-.hero-badge {
-  display: flex;                     /* Use flexbox */
-  flex-direction: column;            /* Stack items vertically */
-  align-items: center;               /* Center horizontally */
-  margin-top: 1rem;                  /* Space above badge */
-  width: 100%;                       /* Full width */
-}
-
-/* Text within the badge */
-.hero-badge span {
-  color: var(--color-accent);        /* Orange text */
-  font-size: 1.2rem;                 /* Large text */
-  margin-bottom: 0.5rem;             /* Space below text */
-}
-
-/* Call to action buttons container */
-.hero-cta {
-  display: flex;                     /* Use flexbox for button layout */
-  gap: 1rem;                         /* Space between buttons */
-  justify-content: center;           /* Center buttons */
-  margin-bottom: 2rem;               /* Space below buttons */
-  width: 100%;                       /* Full width */
-}
-
-/* ========== About Section ========== */
-/* The section that tells visitors about the company */
-.about-section {
-  padding: 6rem 0;                   /* Large space top and bottom */
-  background: var(--color-bg);       /* Light gray background */
-  padding-top: 7rem;                 /* Extra padding at top for better scrolling with fixed header */
-}
-
-/* ========== Services Section ========== */
-/* The section that shows what services are offered */
-.services-section {
-  padding: 6rem 0;                   /* Large space top and bottom */
-  background: white;                 /* White background */
-  padding-top: 7rem;                 /* Extra padding at top for better scrolling with fixed header */
-}
-
-/* Grid to display service cards */
-.services-grid {
-  display: flex;
-  gap: 2.5rem;
-  margin-top: 3rem;
-  padding: 0.5rem;
-  min-height: 320px;
-  align-items: flex-start;
-}
-
-/* Services section image separator */
-/* This is the full-width image that separates services from projects section */
-.services-separator {
-  margin-top: 5rem;
-  position: relative;
-  height: 400px;
-  overflow: hidden;
-  width: 100%;
-}
-
-/* The actual separator image */
-.separator-image {
-  width: 100%;                          /* Full width */
-  height: 100%;                         /* Full height of container */
-  object-fit: cover;                    /* Cover the area without distortion */
-  object-position: center;              /* Center the image */
-  display: block;                       /* Block display */
-}
-
-/* ========== Why Us Section ========== */
-/* The section explaining why customers should choose this company */
-.why-us-section {
-  padding: 6rem 0;                   /* Large space top and bottom */
-  background: var(--color-bg);       /* Light gray background */
-  text-align: center;                /* Center all text */
-  padding-top: 7rem;                 /* Extra padding at top for better scrolling */
-}
-
-/* Section title */
-.why-us-section h2 {
-  margin-bottom: 3rem;               /* Large space below heading */
-}
-
-/* Grid layout for reasons why cards */
-.why-us-grid {
-  display: grid;                     /* Use CSS grid layout */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid with minimum card width */
-  gap: 2rem;                         /* Space between cards */
-  max-width: 1100px;                 /* Maximum width of the grid */
-  margin: 0 auto;                    /* Center the grid */
-}
-
-/* Individual reason card */
-.why-us-card {
-  background: white;                 /* White background */
-  padding: 2rem;                     /* Space inside card */
-  border-radius: 8px;                /* Rounded corners */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow for depth */
-  transition: transform 0.3s;        /* Smooth animation for hover effect */
-}
-
-/* Hover effect for reason cards */
-.why-us-card:hover {
-  transform: translateY(-5px);       /* Card moves up slightly when hovered */
-}
-
-/* Icon in reason card */
-.why-us-icon {
-  font-size: 2.5rem;                 /* Large icon */
-  margin-bottom: 1rem;               /* Space below icon */
-}
-
-/* Title in reason card */
-.why-us-card h3 {
-  margin-bottom: 1rem;               /* Space below title */
-  font-size: 1.4rem;                 /* Medium large text */
-}
-
-/* ========== Testimonials Section ========== */
-/* The section showing customer reviews */
-.testimonials-section {
-  padding: 6rem 0;                  /* Large space top and bottom */
-  padding-top: 7rem;                /* Extra padding at top for better scrolling */
-  background: white;                /* White background */
-  text-align: center;               /* Center all text */
-}
-
-/* Individual testimonial card */
-.testimonial-card {
-  max-width: 800px;                 /* Limit width for readability */
-  margin: 0 auto;                   /* Center horizontally */
-  padding: 2rem;                    /* Space inside card */
-  background: var(--color-bg);      /* Light gray background */
-  border-radius: 8px;               /* Rounded corners */
-}
-
-/* Star rating display */
-.testimonial-rating {
-  color: var(--color-accent);       /* Orange color for stars */
-  font-size: 1.5rem;                /* Large text for stars */
-  margin-bottom: 1rem;              /* Space below stars */
-}
-
-/* Testimonial quote text */
-blockquote {
-  font-size: 1.25rem;               /* Larger text for testimonial */
-  font-style: italic;               /* Italic text for quotes */
-  margin-bottom: 1rem;              /* Space below quote */
-}
-
-/* Customer name/source */
-cite {
-  color: var(--color-primary);      /* Blue text for name */
-  font-weight: 500;                 /* Semi-bold text */
-}
-
-/* ========== Contact Section ========== */
-/* The section with contact information and form */
-.contact-section {
-  padding: 6rem 0;                  /* Large space top and bottom */
-  padding-top: 7rem;                /* Extra padding at top for better scrolling */
-  background: var(--color-primary); /* Blue background */
-  color: white;                     /* White text */
-}
-
-/* Layout for contact information and form */
-.contact-content {
-  display: grid;                    /* Use CSS grid layout */
-  grid-template-columns: 1fr 1fr;   /* Two equal columns */
-  gap: 4rem;                        /* Large space between columns */
-  align-items: start;               /* Align to top */
-}
-
-/* Headings in contact info */
-.contact-info h3 {
-  margin-bottom: 1.5rem;            /* Space below headings */
-  color: white;                     /* White text */
-}
-
-/* List of service areas */
-.service-areas {
-  list-style: none;                 /* No bullet points */
-  margin: 1rem 0 2rem;              /* Space above and below list */
-  display: grid;                    /* Use CSS grid layout */
-  grid-template-columns: 1fr 1fr;   /* Two equal columns */
-  gap: 0.5rem 1.5rem;               /* Space between items */
-}
-
-/* Individual service area item */
-.service-areas li {
-  margin-bottom: 0.5rem;            /* Space below each item */
-  position: relative;               /* Position for bullet point */
-  padding-left: 1.2rem;             /* Space for bullet point */
-}
-
-/* Custom bullet points for service areas */
-.service-areas li::before {
-  content: "•";                     /* Bullet character */
-  color: var(--color-accent);       /* Orange bullet */
-  font-size: 1.2rem;                /* Large bullet */
-  position: absolute;               /* Position independently */
-  left: 0;                          /* Align to left */
-  top: -0.2rem;                     /* Slight adjustment for vertical alignment */
-}
-
-/* Container for contact details (phone, email, etc.) */
-.contact-details {
-  font-size: 1.1rem;                /* Slightly larger text */
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
-  padding: 1.5rem;                  /* Space inside container */
-  border-radius: 8px;               /* Rounded corners */
-  margin-top: 1.5rem;               /* Space above container */
-}
-
-/* Extra message below contact details */
-.contact-tagline {
-  margin-top: 1rem;                 /* Space above tagline */
-  font-style: italic;               /* Italic text */
-  opacity: 0.9;                     /* Slightly transparent */
-}
-
-/* Contact form container */
-.contact-form-container {
-  background: white;                 /* White background */
-  border-radius: 8px;                /* Rounded corners */
-  padding: 2rem;                     /* Space inside container */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Shadow for depth */
-}
-
-/* Form heading */
-.contact-form-container h3 {
-  color: var(--color-primary);       /* Blue text */
-  margin-bottom: 1.5rem;             /* Space below heading */
-  text-align: center;                /* Center heading */
-}
-
-/* Form layout */
-.contact-form {
-  display: grid;                     /* Use CSS grid layout */
-  grid-template-columns: 1fr 1fr;    /* Two equal columns */
-  gap: 1.5rem;                       /* Space between form fields */
-}
-
-/* Container for each form field */
-.form-group {
-  display: flex;                     /* Use flexbox layout */
-  flex-direction: column;            /* Stack label and input */
-}
-
-/* Form groups that span both columns */
-.form-group.full-width {
-  grid-column: span 2;               /* Make field span both columns */
-}
-
-/* Form field labels */
-.contact-form label {
-  margin-bottom: 0.5rem;             /* Space below label */
-  font-weight: 600;                  /* Semi-bold text */
-  color: var(--color-primary);       /* Blue text */
-  font-size: 0.9rem;                 /* Slightly smaller text */
-}
-
-/* Form input fields, dropdowns, and text areas */
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  padding: 0.75rem;                  /* Space inside fields */
-  border: 1px solid var(--color-border); /* Light gray border */
-  border-radius: 4px;                /* Rounded corners */
-  font-family: var(--font-body);     /* Match body font */
-  font-size: 1rem;                   /* Normal text size */
-}
-
-/* Textarea specific styling */
-.contact-form textarea {
-  resize: vertical;                  /* Allow vertical resizing only */
-  min-height: 120px;                 /* Minimum height */
-}
-
-/* Submit button in form */
-.contact-form button {
-  grid-column: span 2;               /* Make button span both columns */
-  margin-top: 1rem;                  /* Space above button */
-  justify-self: center;              /* Center button horizontally */
-  width: 100%;                       /* Full width button */
-}
-
-/* Success message styles */
-/* Styles for success confirmation after form submission */
-.form-success {
-  text-align: center;                /* Center all content */
-  padding: 2rem 1rem;                /* Space inside container */
-}
-
-/* Success message heading */
-.form-success h3 {
-  color: var(--color-primary);       /* Blue text */
-  margin-bottom: 1rem;               /* Space below heading */
-  font-size: 1.8rem;                 /* Large text */
-}
-
-/* Success message paragraphs */
-.form-success p {
-  margin-bottom: 1.5rem;             /* Space below paragraphs */
-  font-size: 1.1rem;                 /* Slightly larger text */
-}
-
-/* Last paragraph in success message */
-.form-success p:last-of-type {
-  margin-bottom: 0;                  /* No space below last paragraph */
-}
-
-/* Containers for submission details in success message */
-.form-success .contact-name,
-.form-success .contact-email,
-.form-success .contact-project {
-  background: var(--color-bg);       /* Light gray background */
-  padding: 0.75rem;                  /* Space inside container */
-  border-radius: 4px;                /* Rounded corners */
-  margin: 0.5rem auto;               /* Center and add space */
-  max-width: 350px;                  /* Limit width */
-  text-align: left;                  /* Left-align text */
-}
-
-/* Large button style */
+/* Large button variation */
 .btn-large {
-  padding: 1rem 3rem;                /* More padding for larger button */
-  font-size: 1.25rem;                /* Larger text */
+  font-size: 1rem;                  /* Same size on mobile */
+  padding: 0.75rem 1.5rem;          /* Same padding on mobile */
 }
 
-/* ========== Footer ========== */
-/* The section at the bottom of every page */
-.site-footer {
-  background: var(--color-text);     /* Dark gray background */
-  color: white;                      /* White text */
-  padding: 2rem 0;                   /* Space top and bottom */
-  text-align: center;                /* Center text */
+/* Top CTA button in header - hide on mobile to save space */
+.site-header .btn-primary {
+  display: none;                    /* Hide on mobile */
 }
 
-/* ========== Projects Section ========== */
-/* The section showing examples of completed work */
+/* 10. Hero section */
+/* The large banner section at the top of the page */
+.hero {
+  position: relative;               /* For positioning overlay */
+  min-height: 50vh;                 /* Smaller height on mobile */
+  display: flex;                    /* Use flexbox for centering */
+  align-items: center;              /* Center content vertically */
+  padding: 3rem 0;                  /* Padding top and bottom */
+  color: #fff;                      /* White text */
+  background: var(--color-primary); /* Blue background */
+  text-align: center;               /* Center text on mobile */
+  position: relative;               /* For background overlay */
+  background-image: url('images/hero-bg.jpg'); /* Background image */
+  background-size: cover;           /* Cover the entire section */
+  background-position: center;      /* Center the background */
+}
+
+/* Dark overlay on hero to ensure text is readable over any background image */
+.hero::before {
+  content: '';                     /* Required for pseudo-elements */
+  position: absolute;              /* Position relative to hero */
+  top: 0;                          /* Start at top */
+  left: 0;                         /* Start at left */
+  width: 100%;                     /* Full width */
+  height: 100%;                    /* Full height */
+  background: rgba(0, 0, 0, 0.5);  /* Semi-transparent black overlay */
+}
+
+/* Container inside hero - positioning above the overlay */
+.hero-content {
+  position: relative;              /* Position above overlay */
+  z-index: 1;                      /* Above the overlay */
+  max-width: 800px;                /* Maximum width on desktop */
+  margin: 0 auto;                  /* Center horizontally */
+  padding: 0 1rem;                 /* Padding on the sides */
+}
+
+/* Main heading in hero section */
+.hero h1 {
+  font-size: 2rem;                 /* Smaller size on mobile */
+  margin-bottom: 1rem;             /* Space below */
+  color: #fff;                     /* White text */
+}
+
+/* Subtitle in hero section */
+.hero-subtitle {
+  font-size: 1.1rem;               /* Smaller size on mobile */
+  margin-bottom: 2rem;             /* Space below */
+  opacity: 0.9;                    /* Slightly transparent */
+}
+
+/* Call to action buttons in hero */
+.hero-cta {
+  display: flex;                   /* Row of buttons */
+  flex-direction: column;          /* Stack buttons on mobile */
+  gap: 1rem;                       /* Space between buttons */
+  justify-content: center;         /* Center horizontally */
+  margin-bottom: 2rem;             /* Space below */
+}
+
+/* Stars/review badge in hero */
+.hero-badge {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  display: inline-block;           /* Inline block element */
+  padding: 0.5rem 1rem;            /* Space inside */
+  border-radius: 4px;              /* Rounded corners */
+  font-size: 0.9rem;               /* Smaller text */
+}
+
+/* Star rating in badge */
+.hero-badge span {
+  color: var(--color-accent);      /* Orange stars */
+  margin-right: 0.5rem;            /* Space to the right */
+}
+
+/* ===== SECTION STYLING ===== */
+/* Common styles for all content sections */
+
+/* Basic section styling */
+section {
+  padding: 3rem 0;                 /* Smaller padding on mobile */
+}
+
+/* Section headings */
+section h2 {
+  text-align: center;              /* Center section headings */
+  font-size: 2rem;                 /* Smaller on mobile */
+  margin-bottom: 1.5rem;           /* Space below */
+}
+
+/* Section intro paragraphs */
+section > .container > p {
+  text-align: center;              /* Center intro text */
+  max-width: 700px;                /* Maximum width */
+  margin: 0 auto 2rem;             /* Center and add space below */
+  font-size: 1.1rem;               /* Slightly larger text */
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  padding: 3rem 0;                 /* Smaller padding on mobile */
+  background: #fff;                /* White background */
+}
+
+/* Layout for about content */
+.about-content {
+  display: flex;                   /* Flex container */
+  flex-direction: column;          /* Stack on mobile */
+  align-items: center;             /* Center items */
+  gap: 2rem;                       /* Space between items */
+}
+
+/* Text column in about section */
+.about-text {
+  max-width: 100%;                 /* Full width on mobile */
+}
+
+/* Subheading in about section */
+.about-text h3 {
+  font-size: 1.5rem;               /* Smaller on mobile */
+  margin-bottom: 1rem;             /* Space below */
+}
+
+/* Image in about section */
+.about-image img {
+  max-width: 100%;                 /* Full width on mobile */
+  height: auto;                    /* Maintain aspect ratio */
+  border-radius: 8px;              /* Rounded corners */
+}
+
+/* ===== SERVICES SECTION ===== */
+/* Section with service cards */
+.services-section {
+  padding: 3rem 0 0;               /* No bottom padding (separator image) */
+  background: #fff;                /* White background */
+}
+
+/* Grid of service cards */
+.services-grid {
+  display: flex;                   /* Flex container */
+  flex-direction: column;          /* Stack on mobile */
+  gap: 2rem;                       /* Space between cards */
+  align-items: center;             /* Center cards */
+  margin-bottom: 3rem;             /* Space below grid */
+}
+
+/* Individual service card */
+.service-card {
+  background: #fff;                /* White background */
+  border-radius: 8px;              /* Rounded corners */
+  padding: 1.5rem;                 /* Space inside */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 100%;                 /* Full width on mobile */
+  transform: translateZ(0);        /* For 3D effect */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  display: flex;                   /* Flex container */
+  flex-direction: column;          /* Stack content */
+  align-items: center;             /* Center content */
+}
+
+/* Service card hover effect */
+.service-card:hover {
+  transform: translateY(-5px);     /* Lift up slightly */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Larger shadow */
+}
+
+/* Container for service icons */
+.icon-container {
+  width: 80px;                     /* Fixed width */
+  height: 80px;                    /* Fixed height */
+  margin-bottom: 1rem;             /* Space below */
+  display: flex;                   /* Flex container */
+  align-items: center;             /* Center vertically */
+  justify-content: center;         /* Center horizontally */
+}
+
+/* Service icon images */
+.service-card img {
+  max-width: 100%;                 /* Responsive image */
+  height: auto;                    /* Maintain aspect ratio */
+}
+
+/* Service card heading */
+.service-card h3 {
+  margin: 1rem 0;                  /* Space around */
+  text-align: center;              /* Center text */
+  font-size: 1.25rem;              /* Smaller on mobile */
+}
+
+/* Service card paragraph */
+.service-card p {
+  text-align: center;              /* Center text */
+}
+
+/* Full-width separator image */
+.services-separator {
+  width: 100%;                     /* Full width */
+  overflow: hidden;                /* Hide overflow */
+  height: 150px;                   /* Fixed height on mobile */
+  position: relative;              /* For positioning */
+}
+
+/* The separator image itself */
+.separator-image {
+  width: 100%;                     /* Full width */
+  height: 100%;                    /* Full height */
+  object-fit: cover;               /* Cover the container */
+  display: block;                  /* Block element */
+}
+
+/* ===== PROJECTS SECTION ===== */
+/* Section showcasing completed projects */
 .projects-section {
-  padding: 6rem 0;                   /* Large space top and bottom */
-  padding-top: 7rem;                 /* Extra padding at top for better scrolling */
-  background: white;                 /* White background */
+  padding: 3rem 0;                 /* Smaller padding on mobile */
+  background: var(--color-bg);     /* Light gray background */
 }
 
-/* Projects section heading */
-.projects-section h2 {
-  text-align: center;                /* Center heading */
-  margin-bottom: 1rem;               /* Space below heading */
-}
-
-/* Projects section introduction text */
-.projects-section > .container > p {
-  text-align: center;                /* Center text */
-  max-width: 700px;                  /* Limit width for readability */
-  margin: 0 auto 3rem;               /* Center and add space below */
-  font-size: 1.1rem;                 /* Slightly larger text */
-}
-
-/* Layout for featured project (image + description) */
+/* Featured project layout */
 .project-layout {
-  display: flex;                     /* Use flexbox layout */
-  align-items: center;               /* Center items vertically */
-  gap: 3rem;                         /* Space between image and text */
-  margin-bottom: 4rem;               /* Space below each project */
+  display: flex;                   /* Flex container */
+  flex-direction: column;          /* Stack on mobile */
+  gap: 2rem;                       /* Space between elements */
+  align-items: center;             /* Center on mobile */
+  margin-bottom: 3rem;             /* Space below */
 }
 
-/* Container for project image */
+/* Project image container */
 .project-image {
-  flex: 1;                           /* Take up equal space */
+  width: 100%;                     /* Full width on mobile */
 }
 
-/* Project image styling */
+/* Project image */
 .project-image img {
-  width: 100%;                       /* Fill container width */
-  border-radius: 8px;                /* Rounded corners */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Subtle shadow */
-  max-height: 350px;                 /* Maximum height */
-  object-fit: cover;                 /* Crop image to fill space */
+  width: 100%;                     /* Full width */
+  height: auto;                    /* Maintain aspect ratio */
+  border-radius: 8px;              /* Rounded corners */
 }
 
-/* Container for project description */
+/* Project info text */
 .project-info {
-  flex: 1;                           /* Take up equal space */
+  width: 100%;                     /* Full width on mobile */
 }
 
-/* Project title */
+/* Project heading */
 .project-info h3 {
-  font-size: 1.8rem;                 /* Large text */
-  margin-bottom: 1rem;               /* Space below title */
+  margin-bottom: 1rem;             /* Space below */
+  font-size: 1.5rem;               /* Smaller on mobile */
 }
 
-/* Project description text */
-.project-info p {
-  margin-bottom: 1.5rem;             /* Space below paragraphs */
-  font-size: 1.1rem;                 /* Slightly larger text */
-}
-
-/* Grid of smaller project cards */
+/* Project grid for multiple projects */
 .projects-grid {
-  display: flex;                     /* Use flexbox layout */
-  gap: 2rem;                         /* Space between cards */
-  margin-top: 2rem;                  /* Space above grid */
+  display: flex;                   /* Flex container */
+  flex-direction: column;          /* Stack on mobile */
+  gap: 2rem;                       /* Space between cards */
+  align-items: center;             /* Center cards */
 }
 
-/* Individual smaller project card */
+/* Individual project card */
 .project-card {
-  flex: 1;                           /* Equal width cards */
-  background: var(--color-bg);       /* Light gray background */
-  padding: 1.5rem;                   /* Space inside card */
-  border-radius: 8px;                /* Rounded corners */
-  text-align: center;                /* Center content */
+  background: #fff;                /* White background */
+  border-radius: 8px;              /* Rounded corners */
+  overflow: hidden;                /* Hide overflow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 100%;                     /* Full width on mobile */
 }
 
 /* Project card image */
 .project-card img {
-  width: 100%;                       /* Fill container width */
-  height: 150px;                     /* Fixed height */
-  object-fit: cover;                 /* Crop image to fill space */
-  border-radius: 4px;                /* Slightly rounded corners */
-  margin-bottom: 1rem;               /* Space below image */
+  width: 100%;                     /* Full width */
+  height: 150px;                   /* Fixed height */
+  object-fit: cover;               /* Cover the space */
 }
 
-/* Project card title */
+/* Text area in project card */
+.project-card h3,
+.project-card p {
+  padding: 0 1rem;                 /* Padding on sides */
+}
+
+/* Project card heading */
 .project-card h3 {
-  margin-bottom: 0.5rem;             /* Space below title */
-  font-size: 1.3rem;                 /* Medium-large text */
+  margin: 1rem 0 0.5rem;           /* Margins */
+  font-size: 1.25rem;              /* Smaller on mobile */
 }
 
-/* ========== Responsive Styles ========== */
-/* Adjustments for smaller screens (tablets and phones) */
+/* Project card paragraph */
+.project-card p {
+  margin-bottom: 1rem;             /* Space below */
+}
 
-/* Styles for screens 768px wide or less (tablets and phones) */
-@media (max-width: 768px) {
-  /* Adjust hero section for smaller screens */
-  .hero {
-    min-height: 40vh;                /* Reduce minimum height */
-    padding: 4rem 1rem;              /* Reduce padding */
+/* ===== WHY US SECTION ===== */
+/* Section highlighting company advantages */
+.why-us-section {
+  padding: 3rem 0;                 /* Smaller padding on mobile */
+  background: #fff;                /* White background */
+}
+
+/* Grid for Why Us cards */
+.why-us-grid {
+  display: grid;                   /* CSS Grid layout */
+  grid-template-columns: 1fr;      /* One column on mobile */
+  gap: 1.5rem;                     /* Space between cards */
+}
+
+/* Individual Why Us card */
+.why-us-card {
+  background: var(--color-bg);     /* Light gray background */
+  padding: 1.5rem;                 /* Space inside */
+  border-radius: 8px;              /* Rounded corners */
+  text-align: center;              /* Center text */
+}
+
+/* Icon in Why Us card */
+.why-us-icon {
+  font-size: 2rem;                 /* Large icon */
+  margin-bottom: 0.75rem;          /* Space below */
+}
+
+/* Heading in Why Us card */
+.why-us-card h3 {
+  margin-bottom: 0.75rem;          /* Space below */
+  font-size: 1.25rem;              /* Smaller on mobile */
+}
+
+/* ===== TESTIMONIALS SECTION ===== */
+/* Section with customer quotes */
+.testimonials-section {
+  padding: 3rem 0;                 /* Smaller padding on mobile */
+  background: var(--color-primary); /* Blue background */
+  color: #fff;                     /* White text */
+}
+
+/* Section heading */
+.testimonials-section h2 {
+  color: #fff;                     /* White heading */
+}
+
+/* Individual testimonial card */
+.testimonial-card {
+  max-width: 800px;                /* Maximum width */
+  margin: 0 auto;                  /* Center horizontally */
+  text-align: center;              /* Center text */
+  padding: 1.5rem;                 /* Space inside card */
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  border-radius: 8px;              /* Rounded corners */
+}
+
+/* Star rating display */
+.testimonial-rating {
+  color: var(--color-accent);      /* Orange color for stars */
+  font-size: 1.25rem;              /* Smaller on mobile */
+  margin-bottom: 1rem;             /* Space below */
+}
+
+/* Testimonial quote text */
+blockquote {
+  font-size: 1.1rem;               /* Smaller on mobile */
+  font-style: italic;              /* Italic text */
+  margin-bottom: 1rem;             /* Space below */
+}
+
+/* Customer name/source */
+cite {
+  color: #fff;                     /* White text */
+  font-weight: 500;                /* Semi-bold */
+}
+
+/* ===== CONTACT SECTION ===== */
+/* Section with contact info and form */
+.contact-section {
+  padding: 3rem 0;                 /* Smaller padding on mobile */
+  background: var(--color-primary); /* Blue background */
+  color: #fff;                     /* White text */
+}
+
+/* Contact section heading */
+.contact-section h2 {
+  color: #fff;                     /* White heading */
+}
+
+/* Layout for contact info and form */
+.contact-content {
+  display: flex;                   /* Flex container */
+  flex-direction: column;          /* Stack on mobile */
+  gap: 2rem;                       /* Space between elements */
+}
+
+/* Contact information container */
+.contact-info {
+  width: 100%;                     /* Full width on mobile */
+}
+
+/* Headings in contact section */
+.contact-info h3,
+.contact-form-container h3 {
+  color: #fff;                     /* White headings */
+  margin-bottom: 1rem;             /* Space below */
+  font-size: 1.25rem;              /* Smaller on mobile */
+}
+
+/* List of service areas */
+.service-areas {
+  list-style: none;                /* No bullet points */
+  margin: 1rem 0 1.5rem;           /* Margins */
+  display: grid;                   /* CSS Grid layout */
+  grid-template-columns: 1fr;      /* One column on mobile */
+  gap: 0.5rem;                     /* Space between items */
+}
+
+/* Individual service area item */
+.service-areas li {
+  position: relative;              /* For bullet positioning */
+  padding-left: 1.2rem;            /* Space for bullet */
+}
+
+/* Custom bullet points */
+.service-areas li::before {
+  content: "•";                    /* Bullet character */
+  color: var(--color-accent);      /* Orange bullet */
+  font-size: 1.2rem;               /* Large bullet */
+  position: absolute;              /* Position independently */
+  left: 0;                         /* Align to left */
+  top: -0.2rem;                    /* Vertical alignment */
+}
+
+/* Contact details container */
+.contact-details {
+  font-size: 1rem;                 /* Smaller on mobile */
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  padding: 1.5rem;                 /* Space inside */
+  border-radius: 8px;              /* Rounded corners */
+  margin-top: 1.5rem;              /* Space above */
+}
+
+/* Message below contact details */
+.contact-tagline {
+  margin-top: 1rem;                /* Space above */
+  font-style: italic;              /* Italic text */
+  opacity: 0.9;                    /* Slightly transparent */
+}
+
+/* Contact form container */
+.contact-form-container {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent on mobile */
+  border-radius: 8px;              /* Rounded corners */
+  padding: 1.5rem;                 /* Space inside */
+  width: 100%;                     /* Full width on mobile */
+}
+
+/* Form heading (on white background) */
+.contact-form-container h3 {
+  color: #fff;                     /* White text on mobile */
+}
+
+/* Form group - container for input and label */
+.form-group {
+  margin-bottom: 1rem;             /* Space below */
+  width: 100%;                     /* Full width */
+}
+
+/* Make some form groups full width */
+.form-group.full-width {
+  grid-column: 1 / -1;             /* Full width in the grid */
+}
+
+/* Form labels */
+.contact-form label {
+  display: block;                  /* Block element */
+  margin-bottom: 0.5rem;           /* Space below */
+  font-weight: 500;                /* Semi-bold */
+}
+
+/* Text inputs, email inputs, and select dropdowns */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form select,
+.contact-form textarea {
+  width: 100%;                     /* Full width */
+  padding: 0.75rem;                /* Space inside */
+  border: 1px solid #ddd;          /* Light border */
+  border-radius: 4px;              /* Rounded corners */
+  background: #fff;                /* White background */
+  font-family: inherit;            /* Use same font as page */
+  font-size: 1rem;                 /* Normal size */
+}
+
+/* Textarea (multi-line input) */
+.contact-form textarea {
+  resize: vertical;                /* Only allow vertical resizing */
+  min-height: 120px;               /* Minimum height */
+}
+
+/* Submit button in form */
+.contact-form button[type="submit"] {
+  margin-top: 1rem;                /* Space above */
+  width: 100%;                     /* Full width on mobile */
+}
+
+/* ===== FOOTER ===== */
+/* The bottom section of every page */
+.site-footer {
+  background: var(--color-primary); /* Blue background */
+  color: #fff;                     /* White text */
+  padding: 1.5rem 0;               /* Space inside */
+  text-align: center;              /* Center text */
+}
+
+/* Paragraph in footer */
+.site-footer p {
+  opacity: 0.8;                    /* Slightly transparent */
+  font-size: 0.9rem;               /* Smaller text */
+}
+
+/* ========== MEDIA QUERIES FOR LARGER SCREENS ========== */
+/* These styles will override the mobile styles when the screen is wider */
+
+/* Small tablets and up (576px and up) */
+@media (min-width: 576px) {
+  :root {
+    --spacer: 1.25rem;            /* Slightly larger spacing on tablets */
   }
-
-  /* Make hero headline smaller on mobile */
+  
   .hero h1 {
-    font-size: 2.5rem;               /* Smaller heading text */
+    font-size: 2.25rem;           /* Larger heading on tablets */
   }
   
-  /* Make hero subtitle smaller on mobile */
-  .hero-subtitle {
-    font-size: 1.2rem;               /* Smaller subtitle text */
-    margin-bottom: 1.5rem;           /* Less space below */
-  }
-  
-  /* Switch from two-column to one-column layout */
-  .about-content,
-  .contact-content {
-    grid-template-columns: 1fr;      /* Single column */
-    gap: 2rem;                       /* Less space between elements */
-  }
-  
-  /* Make service areas list single column */
   .service-areas {
-    grid-template-columns: 1fr;      /* Single column */
+    grid-template-columns: 1fr 1fr; /* Two columns on tablets */
   }
   
-  /* Make contact form single column */
-  .contact-form {
-    grid-template-columns: 1fr;      /* Single column */
-  }
-  
-  /* Adjust full-width form fields for mobile */
-  .form-group.full-width {
-    grid-column: 1;                  /* Span single column */
-  }
-  
-  /* Adjust form button for mobile */
-  .contact-form button {
-    grid-column: 1;                  /* Span single column */
-  }
-  
-  /* Stack hero buttons vertically on mobile */
   .hero-cta {
-    flex-direction: column;          /* Stack buttons vertically */
-    width: 100%;                     /* Full width */
+    flex-direction: row;           /* Buttons side by side */
+    justify-content: center;       /* Center the buttons */
+  }
+}
+
+/* Medium tablets and up (768px and up) */
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 100px;     /* More padding on larger screens */
   }
   
-  /* Make buttons full width on mobile */
-  .btn {
-    width: 100%;                     /* Full width */
+  :root {
+    --spacer: 1.5rem;              /* More spacing on larger screens */
   }
-
-  /* Adjust hero badge spacing for mobile */
-  .hero-badge {
-    margin-top: 1rem;                /* More space above badge */
+  
+  .container {
+    max-width: 720px;              /* Limited width on tablets */
   }
-
-  /* Adjust separator image height on mobile */
+  
+  .hero {
+    min-height: 60vh;              /* Taller hero on tablets */
+    padding: 4rem 0;               /* More padding */
+  }
+  
+  .hero h1 {
+    font-size: 2.75rem;            /* Larger heading on tablets */
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;            /* Larger subtitle */
+  }
+  
+  section {
+    padding: 4rem 0;               /* More section padding */
+  }
+  
+  section h2 {
+    font-size: 2.25rem;            /* Larger section headings */
+  }
+  
+  .about-content {
+    flex-direction: row;           /* Side by side on tablets */
+    align-items: center;           /* Center vertically */
+  }
+  
+  .about-text {
+    flex: 1;                       /* Equal width */
+    padding-right: 2rem;           /* Space between text and image */
+  }
+  
+  .about-image {
+    flex: 1;                       /* Equal width */
+  }
+  
+  .services-grid {
+    flex-direction: row;           /* Side by side cards */
+    flex-wrap: wrap;               /* Allow wrapping */
+    justify-content: center;       /* Center cards */
+  }
+  
+  .service-card {
+    width: calc(50% - 1rem);       /* Two columns with gap */
+    max-width: 350px;              /* Maximum width */
+  }
+  
   .services-separator {
-    height: 200px;                       /* Smaller height on mobile */
-    margin-top: 3rem;                    /* Less space above on mobile */
-  }
-}
-
-/* Styles for screens 900px wide or less (medium tablets and smaller) */
-@media (max-width: 900px) {
-  /* Stack project image and info vertically */
-  .project-layout {
-    flex-direction: column;           /* Stack vertically */
-    align-items: flex-start;          /* Align to left */
+    height: 200px;                 /* Taller separator */
   }
   
-  /* Make project images smaller on tablets */
-  .project-image img {
-    max-height: 250px;                /* Reduce maximum height */
+  .projects-grid {
+    flex-direction: row;           /* Side by side */
+    flex-wrap: wrap;               /* Allow wrapping */
+    justify-content: center;       /* Center cards */
   }
   
-  /* Stack service and project cards vertically */
-  .services-grid, .projects-grid {
-    flex-direction: column;           /* Stack cards vertically */
-    align-items: center;              /* Center cards */
-    gap: 2rem;                        /* Less space between stacked cards */
+  .project-card {
+    width: calc(50% - 1rem);       /* Two columns with gap */
   }
   
-  /* Adjust card widths for smaller screens */
-  .service-card, .project-card {
-    width: 95%;                       /* Almost full width */
-    max-width: 400px;                 /* Maximum width */
-    min-height: 0;                    /* Reset minimum height for mobile */
-    padding: 1.5rem;                  /* Slightly less padding on mobile */
-  }
-  
-  /* Make Why Us section single column */
   .why-us-grid {
-    grid-template-columns: 1fr;       /* Single column */
-    max-width: 400px;                 /* Maximum width */
-    margin: 0 auto;                   /* Center on page */
+    grid-template-columns: 1fr 1fr; /* Two columns */
+  }
+  
+  .contact-form-container {
+    background: white;             /* White background on tablets+ */
+    padding: 2rem;                 /* More padding */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Shadow for depth */
+  }
+  
+  .contact-form-container h3 {
+    color: var(--color-primary);   /* Blue text on white background */
+  }
+  
+  /* Show desktop header navigation */
+  .site-header .container {
+    flex-wrap: nowrap;             /* Don't wrap on tablets+ */
+  }
+  
+  .menu-toggle {
+    display: none;                 /* Hide hamburger on tablets+ */
+  }
+  
+  .site-nav {
+    display: block;                /* Always show nav menu */
+    width: auto;                   /* Auto width */
+    margin-top: 0;                 /* No margin */
+  }
+  
+  .site-nav ul {
+    flex-direction: row;           /* Horizontal menu */
+    gap: 1.5rem;                   /* Space between items */
+  }
+  
+  .site-nav li {
+    width: auto;                   /* Auto width */
+    text-align: left;              /* Left aligned text */
+  }
+  
+  .site-nav a {
+    padding: 0.5rem;               /* Less padding */
+    display: inline-block;         /* Inline block */
+    border-bottom: none;           /* No bottom border */
   }
 }
 
-/* Service card specific styling */
-.service-card {
-  text-align: center;               /* Center content */
-  display: flex;                    /* Use flexbox for layout */
-  flex-direction: column;           /* Stack items vertically */
-  align-items: center;              /* Center items horizontally */
-  flex: 1;                          /* Equal width */
-  min-height: 300px;                /* Minimum height for consistency */
-  justify-content: flex-start;      /* Align content to the top */
+/* Large tablets and small laptops (992px and up) */
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;              /* Wider container on laptops */
+  }
+  
+  .logo-img {
+    width: 180px !important;       /* Larger logo on laptops */
+    height: 90px !important;       /* Larger logo height */
+  }
+  
+  .hero h1 {
+    font-size: 3rem;               /* Larger heading on laptops */
+  }
+  
+  .service-card {
+    width: calc(33.333% - 1.5rem); /* Three columns with gap */
+  }
+  
+  .project-card {
+    width: calc(33.333% - 1.5rem); /* Three columns with gap */
+  }
+  
+  .why-us-grid {
+    grid-template-columns: repeat(4, 1fr); /* Four columns */
+  }
+  
+  .contact-content {
+    flex-direction: row;           /* Side by side */
+    gap: 4rem;                     /* More space between */
+  }
+  
+  .contact-info,
+  .contact-form-container {
+    width: 50%;                    /* Half width each */
+  }
+  
+  /* Show the CTA button in the header on laptops */
+  .site-header .btn-primary {
+    display: inline-block;         /* Show on laptops */
+  }
+  
+  /* Allow for nicer form layout on larger screens */
+  .contact-form {
+    display: grid;                 /* Grid layout */
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 1rem;                     /* Gap between fields */
+  }
+  
+  .form-group.full-width {
+    grid-column: 1 / 3;            /* Span both columns */
+  }
+  
+  .contact-form button[type="submit"] {
+    grid-column: 1 / 3;            /* Span both columns */
+    width: auto;                   /* Not full width */
+    margin-left: auto;             /* Push to right */
+    padding-left: 3rem;            /* Wider button */
+    padding-right: 3rem;           /* Wider button */
+  }
 }
 
-/* Service card heading style */
-.service-card h3 {
-  margin: 1rem 0;                   /* Space above and below heading */
-  font-size: 1.4rem;                /* Medium-large text size */
-  color: var(--color-primary);      /* Blue color */
-}
-
-/* Service card text style */
-.service-card p {
-  font-size: 1.05rem;               /* Slightly larger text */
-  line-height: 1.6;                 /* Increased line spacing for readability */
-}
-
-/* Service card icon container */
-.service-card .icon-container {
-  margin-bottom: 1rem;
-  min-height: 70px;
-  overflow: visible;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Service card icon image styling */
-.service-card img {
-  max-height: 70px;
-  max-width: 70px;
-  width: auto;
-  height: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  object-fit: contain;
-  transition: transform 0.3s;
-}
-
-/* Make icon slightly larger on hover */
-.service-card:hover img {
-  transform: scale(1.1);            /* Grow icon slightly when card is hovered */
+/* Desktops and large laptops (1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;             /* Even wider container */
+  }
+  
+  .hero {
+    min-height: 70vh;              /* Taller hero */
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;             /* Larger heading */
+  }
+  
+  .services-separator {
+    height: 250px;                 /* Taller separator */
+  }
 }

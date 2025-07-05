@@ -37,8 +37,23 @@ document.addEventListener('DOMContentLoaded', function() {
         menuToggle.addEventListener('click', function() {
             // Toggle the 'active' class which shows/hides the menu
             siteNav.classList.toggle('active');
+            // Toggle aria-expanded attribute for accessibility
+            const isExpanded = siteNav.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
         });
     }
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        // If the menu is open and the click was outside the menu and not on the toggle button
+        if (siteNav && siteNav.classList.contains('active') && 
+            !siteNav.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+            // Close the menu
+            siteNav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', false);
+        }
+    });
     
     // SMOOTH SCROLLING FOR NAVIGATION
     // This makes clicking on navigation links scroll smoothly instead of jumping
@@ -67,12 +82,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     // If the mobile menu is open, close it after clicking
                     if (siteNav.classList.contains('active')) {
                         siteNav.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', false);
                     }
                     
+                    // Get header height for proper scrolling offset
+                    const headerHeight = document.querySelector('.site-header').offsetHeight;
+                    
                     // Scroll smoothly to the section
-                    // The -100 gives some space at the top so the section isn't hidden behind the header
+                    // The offset gives space at the top so the section isn't hidden behind the header
                     window.scrollTo({
-                        top: targetElement.offsetTop - 100,
+                        top: targetElement.offsetTop - headerHeight - 20, // Dynamic header height plus extra space
                         behavior: 'smooth'  // Makes the scrolling smooth instead of instant
                     });
                 }
@@ -105,4 +124,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // INITIAL SETUP FOR MOBILE/DESKTOP DIFFERENCES
+    // Set aria-expanded attribute on page load
+    if (menuToggle) {
+        menuToggle.setAttribute('aria-expanded', false);
+    }
+    
+    // Check and handle viewport orientation changes
+    function handleOrientationChange() {
+        // Force recalculation of any height-dependent elements
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        
+        // If the navigation menu is open in mobile and we switch to desktop view
+        // (screen width > 768px), make sure the menu is visible
+        if (window.innerWidth >= 768 && siteNav) {
+            siteNav.classList.remove('active');
+        }
+    }
+    
+    // Run once on page load
+    handleOrientationChange();
+    
+    // Listen for window resizing and orientation changes
+    window.addEventListener('resize', handleOrientationChange);
+    window.addEventListener('orientationchange', handleOrientationChange);
 });
