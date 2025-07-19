@@ -1,0 +1,24 @@
+<!DOCTYPE html> <!-- Tell the browser this is an HTML5 page -->
+<html lang="en"> <!-- Start of the page; language is English -->
+<head> <!-- This section has "behind the scenes" info -->
+  <meta charset="UTF-8"> <!-- Make sure letters like "é" show up correctly -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Make the page look good on phones and computers -->
+  <meta name="description" content="Pete's Commercial Painting — Maine's Elite Painters">
+    <!-- Short description for search engines -->
+
+  <!-- Load two nice Google Fonts for headings and body text -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Mulish:wght@300;400&display=swap"
+    rel="stylesheet"
+  >
+  <!-- Google Fonts: Oswald for headings, Inter for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Link to our custom stylesheet where we'll write CSS later -->
+  <link rel="stylesheet" href="styles.css">
+
+  <title>Pete's Commercial Painting</title> <!-- The page title in the browser tab -->
+</head>
+
+<body id="top"> <!-- Everything you see goes inside here -->

@@ -56,17 +56,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // SMOOTH SCROLLING FOR NAVIGATION
-    // This makes clicking on navigation links scroll smoothly instead of jumping
+    // JavaScript handles all navigation scrolling with precise offset control
     
-    // Find all navigation links (in the menu, logo, and any link that points to a section with #)
+    // Find all navigation links that point to sections on the same page
     const navLinks = document.querySelectorAll('.site-nav a, .logo, a[href^="#"]');
     
-    // For each navigation link we found, add special behavior
+    // For each navigation link, add custom scroll behavior
     navLinks.forEach(link => {
         // When someone clicks on a navigation link
         link.addEventListener('click', function(e) {
             // Check if this is a link to a section on the same page (starts with #)
             const href = this.getAttribute('href');
+            console.log('Navigation link clicked! Href:', href); // Debug: confirm click is registered
             if (href.startsWith('#')) {
                 // Get the ID of the section we want to scroll to (remove the # symbol)
                 const targetId = href.substring(1);
@@ -80,18 +81,30 @@ document.addEventListener('DOMContentLoaded', function() {
                     e.preventDefault();
                     
                     // If the mobile menu is open, close it after clicking
-                    if (siteNav.classList.contains('active')) {
+                    if (siteNav && siteNav.classList.contains('active')) {
                         siteNav.classList.remove('active');
-                        menuToggle.setAttribute('aria-expanded', false);
+                        if (menuToggle) {
+                            menuToggle.setAttribute('aria-expanded', false);
+                        }
                     }
                     
                     // Get header height for proper scrolling offset
                     const headerHeight = document.querySelector('.site-header').offsetHeight;
                     
+                    // Calculate scroll position with consistent offset
+                    const scrollOffset = 90; // Standard offset for all sections (reduced from 130 for more downward scroll)
+                    const finalPosition = targetElement.offsetTop - scrollOffset;
+                    
+                    // Debug: log the values to see what's happening
+                    console.log('Target element:', targetElement);
+                    console.log('Header height:', headerHeight);
+                    console.log('Target offset:', targetElement.offsetTop);
+                    console.log('Scroll offset used:', scrollOffset);
+                    console.log('Final scroll position:', finalPosition);
+                    
                     // Scroll smoothly to the section
-                    // The offset gives space at the top so the section isn't hidden behind the header
                     window.scrollTo({
-                        top: targetElement.offsetTop - headerHeight - 20, // Dynamic header height plus extra space
+                        top: finalPosition,
                         behavior: 'smooth'  // Makes the scrolling smooth instead of instant
                     });
                 }

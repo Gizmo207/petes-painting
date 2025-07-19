@@ -338,31 +338,5 @@
       }, 0);
     }
   </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var projectsLink = document.getElementById('projects-link');
-  if (projectsLink) {
-    projectsLink.addEventListener('click', function(e) {
-      var target = document.getElementById('projects');
-      if (target) {
-        e.preventDefault();
-        var y = target.getBoundingClientRect().top + window.pageYOffset - 30;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    });
-  }
-  var whyusLink = document.getElementById('whyus-link');
-  if (whyusLink) {
-    whyusLink.addEventListener('click', function(e) {
-      var target = document.getElementById('why-us');
-      if (target) {
-        e.preventDefault();
-        var y = target.getBoundingClientRect().top + window.pageYOffset - 30;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    });
-  }
-});
-</script>
 </body>
 </html>

@@ -60,11 +60,8 @@ body {
 }
 
 /* Fix for smooth scrolling and proper section anchoring */
-/* This ensures when you click navigation links, it scrolls smoothly and doesn't hide content under the header */
-html {
-  scroll-behavior: smooth;     /* Enable smooth scrolling instead of jumping */
-  scroll-padding-top: 80px;    /* Add padding to account for fixed header - smaller for mobile */
-}
+/* JavaScript now handles all smooth scrolling and offset positioning */
+/* CSS scroll-padding disabled to prevent conflicts with JavaScript */
 
 /* 4. Container to center content */
 /* This class is used to keep content centered and at a reasonable width */
@@ -809,9 +806,7 @@ cite {
 
 /* Medium tablets and up (768px and up) */
 @media (min-width: 768px) {
-  html {
-    scroll-padding-top: 100px;     /* More padding on larger screens */
-  }
+  /* CSS scroll-padding disabled - JavaScript handles all scroll positioning */
   
   :root {
     --spacer: 1.5rem;              /* More spacing on larger screens */
